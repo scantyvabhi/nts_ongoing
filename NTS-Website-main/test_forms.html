@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Forms - NTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8">Form Testing Page</h1>
+        
+        <!-- Status Display -->
+        <div id="status" class="mb-8 p-4 rounded-lg bg-blue-100 text-blue-800">
+            Testing forms functionality...
+        </div>
+
+        <!-- Test Buttons -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <button onclick="testContactForm()" class="bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-600">
+                Test Contact Form
+            </button>
+            <button onclick="testEnquiryForm()" class="bg-green-500 text-white p-4 rounded-lg hover:bg-green-600">
+                Test Service Enquiry
+            </button>
+            <button onclick="testJobApplication()" class="bg-purple-500 text-white p-4 rounded-lg hover:bg-purple-600">
+                Test Job Application
+            </button>
+        </div>
+
+        <!-- View Data Buttons -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <button onclick="viewContactData()" class="bg-gray-500 text-white p-4 rounded-lg hover:bg-gray-600">
+                View Contact Data
+            </button>
+            <button onclick="viewEnquiryData()" class="bg-gray-500 text-white p-4 rounded-lg hover:bg-gray-600">
+                View Enquiry Data
+            </button>
+            <button onclick="viewJobData()" class="bg-gray-500 text-white p-4 rounded-lg hover:bg-gray-600">
+                View Job Applications
+            </button>
+        </div>
+
+        <!-- Results Area -->
+        <div id="results" class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-4">Results:</h3>
+            <pre id="resultText" class="bg-gray-100 p-4 rounded overflow-auto text-sm"></pre>
+        </div>
+    </div>
+
+    <script>
+        function updateStatus(message, isError = false) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = isError ? 
+                'mb-8 p-4 rounded-lg bg-red-100 text-red-800' : 
+                'mb-8 p-4 rounded-lg bg-green-100 text-green-800';
+        }
+
+        function showResults(data) {
+            document.getElementById('resultText').textContent = JSON.stringify(data, null, 2);
+        }
+
+        // Test Contact Form
+        async function testContactForm() {
+            updateStatus('Testing contact form submission...');
+            try {
+                const response = await fetch('./contact_handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submit',
+                        name: 'Test User',
+                        email: 'test@example.com',
+                        message: 'This is a test contact message.'
+                    })
+                });
+                
+                const result = await response.json();
+                showResults(result);
+                
+                if (result.success) {
+                    updateStatus('Contact form test successful! ✅');
+                } else {
+                    updateStatus('Contact form test failed: ' + result.error, true);
+                }
+            } catch (error) {
+                updateStatus('Contact form test error: ' + error.message, true);
+                showResults({ error: error.message });
+            }
+        }
+
+        // Test Service Enquiry
+        async function testEnquiryForm() {
+            updateStatus('Testing service enquiry submission...');
+            try {
+                const formData = new FormData();
+                formData.append('action', 'submit_enquiry');
+                formData.append('name', 'Test User');
+                formData.append('phone', '+1234567890');
+                formData.append('email', 'test@example.com');
+                formData.append('service_type', 'Software and Web Dev');
+                formData.append('message', 'This is a test service enquiry.');
+                
+                const response = await fetch('./forms_handler.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                showResults(result);
+                
+                if (result.success) {
+                    updateStatus('Service enquiry test successful! ✅');
+                } else {
+                    updateStatus('Service enquiry test failed: ' + result.error, true);
+                }
+            } catch (error) {
+                updateStatus('Service enquiry test error: ' + error.message, true);
+                showResults({ error: error.message });
+            }
+        }
+
+        // Test Job Application (without file)
+        async function testJobApplication() {
+            updateStatus('Testing job application submission...');
+            try {
+                const formData = new FormData();
+                formData.append('action', 'submit_application');
+                formData.append('name', 'Test Applicant');
+                formData.append('email', 'applicant@example.com');
+                formData.append('phone', '+1234567890');
+                formData.append('role', 'Frontend Developer-Full Time');
+                formData.append('message', 'This is a test job application.');
+                
+                // Create a dummy file for testing
+                const dummyFile = new File(['Test resume content'], 'test_resume.txt', { type: 'text/plain' });
+                formData.append('resume', dummyFile);
+                
+                const response = await fetch('./forms_handler.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                showResults(result);
+                
+                if (result.success) {
+                    updateStatus('Job application test successful! ✅');
+                } else {
+                    updateStatus('Job application test failed: ' + result.error, true);
+                }
+            } catch (error) {
+                updateStatus('Job application test error: ' + error.message, true);
+                showResults({ error: error.message });
+            }
+        }
+
+        // View Contact Data
+        async function viewContactData() {
+            updateStatus('Retrieving contact data...');
+            try {
+                const response = await fetch('./contact_handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: 'get' })
+                });
+                
+                const result = await response.json();
+                showResults(result);
+                updateStatus(`Retrieved ${result.submissions?.length || 0} contact submissions`);
+            } catch (error) {
+                updateStatus('Error retrieving contact data: ' + error.message, true);
+                showResults({ error: error.message });
+            }
+        }
+
+        // View Enquiry Data
+        async function viewEnquiryData() {
+            updateStatus('Retrieving enquiry data...');
+            try {
+                const formData = new FormData();
+                formData.append('action', 'get_enquiries');
+                
+                const response = await fetch('./forms_handler.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                showResults(result);
+                updateStatus(`Retrieved ${result.enquiries?.length || 0} service enquiries`);
+            } catch (error) {
+                updateStatus('Error retrieving enquiry data: ' + error.message, true);
+                showResults({ error: error.message });
+            }
+        }
+
+        // View Job Application Data
+        async function viewJobData() {
+            updateStatus('Retrieving job application data...');
+            try {
+                const formData = new FormData();
+                formData.append('action', 'get_applications');
+                
+                const response = await fetch('./forms_handler.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                showResults(result);
+                updateStatus(`Retrieved ${result.applications?.length || 0} job applications`);
+            } catch (error) {
+                updateStatus('Error retrieving job application data: ' + error.message, true);
+                showResults({ error: error.message });
+            }
+        }
+
+        // Auto-test on page load
+        window.addEventListener('load', function() {
+            updateStatus('Form testing page loaded. Click buttons to test individual forms.');
+        });
+    </script>
+</body>
+</html>

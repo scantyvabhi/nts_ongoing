@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirtimukha Constructions</title>
+    <link rel="shortcut icon" href="./Assets/kc-logo-bw.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-white text-black">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+
+                <!-- Logo -->
+                <div class="flex-shrink-0 hidden md:flex text-xl font-bold flex items-center"><img
+                        src="./Assets/kc-logo-bw.png" style="width: 50px;"> KIRTIMUKHA CONSTRUCTIONS</div>
+                <!-- Logo -->
+                <div class="flex md:hidden flex-shrink-0 text-md leading-tight font-bold items-center "><img
+                        src="./Assets/kc-logo-bw.png" style="width: 40px; margin-right: 10px;"> KIRTIMUKHA <br>
+                    CONSTRUCTIONS</div>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex space-x-6 text-gray-600">
+                    <a href="index.html" class="hover:text-black">Home</a>
+                    <a href="services.html" class="hover:text-black">Services</a>
+                    <a href="blogs.html" class="hover:text-black">Blogs</a>
+                    <a href="about-us.html" class="text-black">About Us</a>
+                    <a href="contact-us.html" class="hover:text-black">Contact Us</a>
+                </nav>
+
+                <!-- Get in Touch Button -->
+                <div class="hidden md:block">
+                    <a href="contact-us.html" class="bg-gray-800 text-white px-8 py-2 hover:bg-black transition ">Get in
+                        Touch</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-2xl focus:outline-none">
+                        &#9776;
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Panel -->
+        <div id="mobile-menu"
+            class="md:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-white px-6 py-0 space-y-4 text-gray-600">
+            <a href="index.html" class="block text-lg hover:text-black">Home</a>
+            <a href="services.html" class="block text-lg hover:text-black">Services</a>
+            <a href="blogs.html" class="block text-lg hover:text-black">Blogs</a>
+            <a href="about-us.html" class="block text-lg text-black ">About Us</a>
+            <a href="contact-us.html" class="block text-lg hover:text-black">Contact Us</a>
+            <a href="contact-us.html" class="block bg-black text-white text-center rounded hover:bg-black">
+                <div class="my-8 py-4">
+                    Get in Touch
+                </div>
+            </a>
+        </div>
+
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-16 mt-12" data-aos="fade-up" data-aos-duration="800">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+
+            <!-- Left Content -->
+            <div class="w-full  md:w-1/2 space-y-6">
+
+                <!-- Heading -->
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
+                    About Us
+                </h1>
+
+                <!-- Description -->
+                <p class="text-gray-600 text-base leading-relaxed">
+                    We believe in the transformative power of architecture to shape communities, inspire innovation, and
+                    elevate the human experience. With a commitment to excellence, creativity, and sustainability, we
+                    bring visionary designs to life, creating spaces that resonate with purpose and beauty.
+                </p>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="border-b pb-4">
+                        <p class="text-3xl font-bold text-gray-900">250+</p>
+                        <p class="text-sm text-gray-500">Projects Done</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <p class="text-3xl font-bold text-gray-900">10K+</p>
+                        <p class="text-sm text-gray-500">Working Hours</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <p class="text-3xl font-bold text-gray-900">180+</p>
+                        <p class="text-sm text-gray-500">Happy Clients</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <p class="text-3xl font-bold text-gray-900">15</p>
+                        <p class="text-sm text-gray-500">Awards</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="w-full md:w-1/2 h-64 md:h-full">
+                <img src="./Assets/about-us-resource-img.png" alt="About Us Image" class="w-full h-full object-cover"
+                    style="height: 80vh; " />
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- What we do -->
+    <section class="py-24" data-aos="fade-up" data-aos-duration="800">
+        <h2 class="text-xl md:text-4xl text-black text-center my-4">What we do / Who we are ?</h2>
+        <p class="text-gray-600 max-w-4xl mx-auto">Kirtimukha is a modern construction company dedicated to making
+            building simple, fast, and reliable. We offer complete solutions - from design and planning to labor and
+            material supply - all in one place. Through our upcoming mobile app, users can choose designs, customize
+            them, get instant cost estimates, and manage their projects with ease. Backed by a passionate team and
+            strong service network, we're building the future of construction in India with trust, quality, and
+            technology.</p>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section data-aos="fade-up" data-aos-duration="800" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto my-12 px-4">
+
+            <!-- Heading -->
+            <h2 class="text-4xl font-bold text-gray-900 mb-2">Driven by Purpose, Designed for Impact</h2>
+            <p class="text-gray-500 text-sm mb-10">
+                Our vision and mission guide every line we draw and every space we create. Here's what shapes our
+                architectural journey.
+            </p>
+
+            <!-- Content Wrapper -->
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+
+                <!-- Left: Image -->
+                <div class="w-full md:w-1/2">
+                    <img id="vmImage" src="./Assets/vision.png" alt="Vision"
+                        class="w-full h-auto rounded shadow-md object-cover">
+                </div>
+
+                <!-- Right: Toggle + Content -->
+                <div class="w-full md:w-1/2 space-y-6">
+
+                    <!-- Toggle Buttons -->
+                    <div class="flex space-x-4">
+                        <button id="visionBtn"
+                            class="px-4 py-2 font-semibold text-black hover:text-black hover:underline">Vision</button>
+                        <button id="missionBtn"
+                            class="px-4 py-2 font-semibold text-gray-500 hover:text-black hover:underline">Mission</button>
+                    </div>
+
+                    <!-- Dynamic Title -->
+                    <h3 id="vmTitle" class="text-2xl font-semibold text-gray-900">Vision</h3>
+
+                    <!-- Dynamic Content -->
+                    <p id="vmContent" class="text-gray-600">
+                        Our vision at Kirtimukha is to become India's leading digital platform for construction
+                        services. We want to transform the way people build by using technology to make construction
+                        more organized, affordable, and reliable. We aim to empower individuals, builders, and
+                        contractors with a one-stop solution for design, labor, and materials — helping them turn their
+                        dream projects into reality with confidence and ease.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="py-16 bg-white" data-aos="fade-up" data-aos-duration="800">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12 items-start">
+
+            <!-- Left: Text Content -->
+            <div class="md:col-span-2 space-y-6">
+                <h2 class="text-4xl font-bold text-gray-900">Building For The Best</h2>
+                <p class="text-gray-600">
+                    We are dedicated to building excellence. Explore how our commitment to quality, innovation, and
+                    client satisfaction sets us apart as your premier construction partner.
+                </p>
+                <p class="text-gray-600 max-w-xl ">
+                    Quality is at the forefront of everything we do. We employ skilled professionals, adhere to industry
+                    best practices, and use premium materials to ensure that every project is executed with the highest
+                    standards of craftsmanship.
+                </p>
+
+                <!-- Image (Small and Fitted) -->
+                <div class="hidden md:block w-64 relative left-1/2 bottom-10">
+                    <img src="./Assets/portfolio-img.png" alt="Building" class="object-cover w-full h-auto" />
+                </div>
+                <div class="block md:hidden w-64 mx-auto">
+                    <img src="./Assets/portfolio-img.png" alt="Building" class="object-cover w-full h-auto" />
+                </div>
+            </div>
+
+            <!-- Right: Stats -->
+            <div class="space-y-6 md:mt-12">
+                <div>
+                    <p class="text-3xl font-semibold text-gray-900">100%</p>
+                    <p class="text-gray-500 border-b pb-2">Employee owned</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-semibold text-gray-900">50</p>
+                    <p class="text-gray-500 border-b pb-2">Project in various industries</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-semibold text-gray-900">20</p>
+                    <p class="text-gray-500 border-b pb-2">With nearly 20 years in business</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section data-aos="fade-up" data-aos-duration="800" class="bg-black text-white px-4 md:px-20 py-24">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
+
+            <!-- LEFT: FAQ Section -->
+            <div class="w-full md:w-1/2">
+                <div class="max-w-3xl mx-auto mb-8 md:mb-12">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-4">
+                        Providing exceptional construction services and insight from the start
+                    </h2>
+                    <p class="text-gray-300 text-sm md:text-base">
+                        From site analysis to project feasibility studies, we offer comprehensive planning and
+                        consulting services.
+                        Our goal is to guide clients through every phase of the architectural process with expertise and
+                        clarity.
+                    </p>
+                </div>
+
+                <div class="divide-y divide-white/30">
+                    <div class="faq-item py-4 cursor-pointer">
+                        <div class="flex justify-between items-center faq-question">
+                            <h3 class="text-md font-medium">1. What services does Kirtimukha offer?</h3>
+                            <span class="text-2xl toggle-icon">-</span>
+                        </div>
+                        <div class="faq-answer mt-2 text-gray-300 text-sm">
+                            We provide complete construction services including design, labor, and material supply for
+                            all major project types.
+                        </div>
+                    </div>
+                    <div class="faq-item py-4 cursor-pointer">
+                        <div class="flex justify-between items-center faq-question">
+                            <h3 class="text-md font-medium">2. Can I customize my building design through your app?</h3>
+                            <span class="text-2xl toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer mt-2 text-gray-300 text-sm hidden">
+                            Yes, our app allows you to choose from ready-made designs and also customize them based on
+                            your
+                            preferences, budget, and project size. You'll get real-time cost and time estimates as well.
+                        </div>
+                    </div>
+
+                    <div class="faq-item py-4 cursor-pointer">
+                        <div class="flex justify-between items-center faq-question">
+                            <h3 class="text-md font-medium">3. Do you only take full projects or provide labor and
+                                materials
+                                separately too?</h3>
+                            <span class="text-2xl toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer mt-2 text-gray-300 text-sm hidden">We offer both. You can hire us for
+                            full
+                            construction projects or simply skilled labor or quality materials for your own ongoing
+                            work.
+                        </div>
+                    </div>
+
+                    <div class="faq-item py-4 cursor-pointer">
+                        <div class="flex justify-between items-center faq-question">
+                            <h3 class="text-md font-medium">4. What areas do you currently serve?</h3>
+                            <span class="text-2xl toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer mt-2 text-gray-300 text-sm hidden">We currently serve the following
+                            areas: <br>
+                            City Center <br>
+                            Suburban Areas <br>
+                            Nearby Towns
+                        </div>
+                    </div>
+
+                    <div class="faq-item py-4 cursor-pointer">
+                        <div class="flex justify-between items-center faq-question">
+                            <h3 class="text-md font-medium">5. How do you ensure quality and timely delivery?</h3>
+                            <span class="text-2xl toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer mt-2 text-gray-300 text-sm hidden">
+                            We use trusted vendors, trained labor, and a digital tracking system to ensure every project
+                            meets
+                            high-quality standards and is delivered on time.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Step-by-Step Section -->
+            <div class="w-full md:w-1/2 space-y-6 md:mt-24">
+                <h3 class="text-xl md:text-4xl font-bold mb-4">How It Works</h3>
+
+                <div class="space-y-4">
+
+                    <div class="p-4 border-b-2 border-gray-500 cursor-pointer step-item" onclick="toggleStep(1)">
+                        <div class="flex justify-between items-center">
+                            <p class="font-semibold text-white">01. Space Planning</p>
+                            <span id="icon-1" class="text-xl">+</span>
+                        </div>
+                        <p id="content-1" class="text-gray-300 text-sm mt-2 hidden">
+                            We begin by understanding your specific requirements, workflow, and aesthetic preferences.
+                            Our team then creates a customized plan that maximizes efficiency, promotes a positive user
+                            experience, and aligns with your vision.
+                        </p>
+                    </div>
+
+                    <div class="p-4 border-b-2 border-gray-500 cursor-pointer step-item" onclick="toggleStep(2)">
+                        <div class="flex justify-between items-center">
+                            <p class="font-semibold text-white">02. Pre-Construction</p>
+                            <span id="icon-2" class="text-xl">+</span>
+                        </div>
+                        <p id="content-2" class="text-gray-300 text-sm mt-2 hidden">
+                            Pre-construction planning is vital as it allows for comprehensive project assessment, risk
+                            mitigation, and budget refinement. It sets the stage for a well-organized construction
+                            process, reducing the likelihood of surprises and ensuring the project stays on track.
+                        </p>
+                    </div>
+
+                    <div class="p-4 border-b-2 border-gray-500 cursor-pointer step-item" onclick="toggleStep(3)">
+                        <div class="flex justify-between items-center">
+                            <p class="font-semibold text-white">03. Interior Design</p>
+                            <span id="icon-3" class="text-xl">+</span>
+                        </div>
+                        <p id="content-3" class="text-gray-300 text-sm mt-2 hidden">
+                            Whether your taste is modern, classic, eclectic, or somewhere in between, we work closely
+                            with you to curate a design that aligns with your vision and lifestyle.
+                        </p>
+                    </div>
+
+                    <div class="p-4 border-b-2 border-gray-500 cursor-pointer step-item" onclick="toggleStep(4)">
+                        <div class="flex justify-between items-center">
+                            <p class="font-semibold text-white">04. Lump-Sum Constracting</p>
+                            <span id="icon-4" class="text-xl">+</span>
+                        </div>
+                        <p id="content-4" class="text-gray-300 text-sm mt-2 hidden">
+                            A construction agreement where the contractor agrees to complete the project for a
+                            pre-determined, fixed sum. This approach provides clients with cost certainty, as the total
+                            cost is established before the project begins.
+                        </p>
+                    </div>
+
+                    <div class="p-4 border-b-2 border-gray-500 cursor-pointer step-item" onclick="toggleStep(5)">
+                        <div class="flex justify-between items-center">
+                            <p class="font-semibold text-white">05. Remodeling Services</p>
+                            <span id="icon-5" class="text-xl">+</span>
+                        </div>
+                        <p id="content-5" class="text-gray-300 text-sm mt-2 hidden">
+                            Whether you're envisioning a complete renovation or a targeted remodeling project, discover
+                            how our remodeling services can bring your vision to reality.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Team Section -->
+    <section class="bg-white px-6 md:px-20 py-24 text-black" data-aos="fade-up" data-aos-duration="800">
+        <!-- Title -->
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-4xl font-bold">Meet The Team Behind The Designs</h2>
+        </div>
+
+        <!-- Team Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Team Member -->
+            <div class="relative overflow-hidden group rounded shadow-lg">
+                <img src="./Assets/ashish.jpg" alt="Team Member 1"
+                    class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div
+                    class="absolute bottom-0 left-0 w-full bg-black/80 text-white px-4 py-3 translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-in-out">
+                    <h4 class="text-lg font-semibold">Ashish</h4>
+                    <p class="text-sm text-gray-300">Founder</p>
+                </div>
+            </div>
+
+            <!-- Repeat for other 3 members -->
+            <div class="relative overflow-hidden group rounded shadow-lg">
+                <img src="./Assets/swati.jpg" alt="Team Member 2"
+                    class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div
+                    class="absolute bottom-0 left-0 w-full bg-black/80 text-white px-4 py-3 translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-in-out">
+                    <h4 class="text-lg font-semibold">Swati</h4>
+                    <p class="text-sm text-gray-300">Co Founder</p>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden group rounded shadow-lg">
+                <img src="./Assets/keshav.jpg" alt="Team Member 3"
+                    class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div
+                    class="absolute bottom-0 left-0 w-full bg-black/80 text-white px-4 py-3 translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-in-out">
+                    <h4 class="text-lg font-semibold">Keshav</h4>
+                    <p class="text-sm text-gray-300">CEO</p>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden group rounded shadow-lg">
+                <img src="./Assets/gaurav.jpg" alt="Team Member 4"
+                    class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div
+                    class="absolute bottom-0 left-0 w-full bg-black/80 text-white px-4 py-3 translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-in-out">
+                    <h4 class="text-lg font-semibold">Gaurav</h4>
+                    <p class="text-sm text-gray-300">CTO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Get a Quote -->
+    <section class="bg-black text-white p-16 mx-auto my-8 max-w-6xl" data-aos="fade-up" data-aos-duration="800">
+        <div class="max-w-5xl mx-auto bg-white text-black p-8 md:flex items-center justify-between">
+
+            <!-- Left Text -->
+            <div class="mb-6 md:mb-0">
+                <h2 class="text-4xl font-bold leading-tight">
+                    Get a Quote
+                </h2>
+            </div>
+
+            <!-- Right Input -->
+            <div class="md:flex items-center space-y-4 md:space-y-0 md:space-x-4">
+                <div>
+                    <p class="text-sm text-gray-500 mb-1">Enter your email address & get listed</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter your email"
+                            class="px-4 py-2 w-64 text-sm bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-600 rounded-l" />
+                        <button
+                            class="bg-gray-800 text-white px-4 py-2 text-sm font-semibold rounded-r hover:bg-gray-900 transition">
+                            SUBSCRIBE
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-white text-gray-700 px-6 md:px-20 py-24" data-aos="fade-up" data-aos-duration="800">
+        <div class="flex flex-col md:flex-row justify-between gap-10">
+
+            <!-- Left Side -->
+            <div class="md:w-1/2 space-y-6">
+                <!-- Logo and Company Name -->
+                <div class="flex items-center gap-2">
+                    <!-- <img src="./Assets/kc-logo-bw.png" alt="Logo" class="w-8 h-8 object-contain" /> -->
+                    <span class="text-2xl md:text-4xl font-semibold text-black">KIRTIMUKHA CONSTRUCTIONS</span>
+                </div>
+
+                <!-- Description -->
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    We are passionate about creating spaces that inspire, innovate, and endure.
+                    Contact us today and let's embark on a journey to bring your architectural vision to life.
+                </p>
+
+                <!-- Social Media Links -->
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white hover:text-black transition">
+                        <img src="./Assets/whatsapp.png" alt="">
+                    </a>
+                    <a href="#"
+                        class="w-8 h-8 flex items-center justify-center rounded-full bg-white hover:text-black transition">
+                        <img src="./Assets/email.png" alt="">
+                    </a>
+                    <a href="#"
+                        class="w-8 h-8 flex items-center justify-center rounded-full bg-white hover:text-black transition">
+                        <img src="./Assets/facebook.png" alt="">
+                    </a>
+                    <a href="#"
+                        class="w-8 h-8 flex items-center justify-center  rounded-full hover:bg-white hover:text-black transition">
+                        <img src="./Assets/instagram.png" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="md:w-1/3 space-y-4 ">
+                <h3 class="text-lg font-semibold">Contact Us</h3>
+                <p class="text-sm text-gray-800">
+                    <a href="tel:+917275990686">📞+91 72759 90686</a> <br>
+                    <a href="tel:+918252115023">📞+91 82521 15023</a>
+                </p>
+                <p class="text-sm text-gray-800">
+                    <a href="mailto:kirtimukhaconstructions@gmail.com">✉️ kirtimukhaconstructions@gmail.com</a>
+                </p>
+                <address class="text-sm text-gray-800">
+                    🏢 Devanahalli, Bangalore Rural, Karnataka, India <br>
+                    Pin Code: 562110
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Menu Script -->
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        let isOpen = false;
+
+        menuToggle.addEventListener("click", () => {
+            isOpen = !isOpen;
+            menuToggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+
+            if (isOpen) {
+                mobileMenu.classList.remove("max-h-0");
+                mobileMenu.classList.add("max-h-[500px]");
+            } else {
+                mobileMenu.classList.remove("max-h-[500px]");
+                mobileMenu.classList.add("max-h-0");
+            }
+        });
+    </script>
+    <!-- FAQ Accordion Script -->
+    <script>
+        document.querySelectorAll('.faq-item').forEach((item, index) => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            const icon = item.querySelector('.toggle-icon');
+
+            // First one open by default
+            if (index === 0) {
+                answer.classList.remove('hidden');
+                icon.textContent = '-';
+            }
+
+            question.addEventListener('click', () => {
+                const isOpen = !answer.classList.contains('hidden');
+
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+                document.querySelectorAll('.toggle-icon').forEach(i => i.textContent = '+');
+
+                // Toggle current
+                if (!isOpen) {
+                    answer.classList.remove('hidden');
+                    icon.textContent = '-';
+                } else {
+                    answer.classList.add('hidden');
+                    icon.textContent = '+';
+                }
+            });
+        });
+    </script>
+
+    <!-- Vision and Mission Script -->
+    <script>
+        const visionBtn = document.getElementById('visionBtn');
+        const missionBtn = document.getElementById('missionBtn');
+        const vmTitle = document.getElementById('vmTitle');
+        const vmContent = document.getElementById('vmContent');
+        const vmImage = document.getElementById('vmImage');
+
+        const visionText = "Our vision at Kirtimukha is to become India's leading digital platform for construction services. We want to transform the way people build by using technology to make construction more organized, affordable, and reliable. We aim to empower individuals, builders, and contractors with a one-stop solution for design, labor, and materials — helping them turn their dream projects into reality with confidence and ease.";
+        const missionText = "At Kirtimukha, our mission is to make construction simple, transparent, and accessible for everyone. We are developing a smart and easy-to-use mobile app that allows users to design, plan, and manage their entire construction project from one place. With this app, we aim to solve real problems in the industry by offering trusted designs, skilled labor, and quality materials — all in one platform. Our goal is to help India build faster, better, and smarter.";
+
+        visionBtn.addEventListener('click', () => {
+            vmTitle.textContent = "Vision";
+            vmContent.textContent = visionText;
+            vmImage.src = "./Assets/vision.png";
+            visionBtn.classList.remove('text-gray-500');
+            visionBtn.classList.add('underline', 'text-black');
+            missionBtn.classList.remove('underline', 'text-black');
+            missionBtn.classList.add('no-underline', 'text-gray-500');
+        });
+
+        missionBtn.addEventListener('click', () => {
+            vmTitle.textContent = "Mission";
+            vmContent.textContent = missionText;
+            vmImage.src = "./Assets/mission.jpg";
+            missionBtn.classList.remove('text-gray-500');
+            missionBtn.classList.add('underline', 'text-black');
+            visionBtn.classList.remove('underline', 'text-black');
+            visionBtn.classList.add('no-underline', 'text-gray-500');
+        });
+    </script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- Step Toggle Script -->
+    <script>
+        function toggleStep(step) {
+            for (let i = 1; i <= 5; i++) {
+                const content = document.getElementById(`content-${i}`);
+                const icon = document.getElementById(`icon-${i}`);
+                if (i === step) {
+                    const isVisible = !content.classList.contains('hidden');
+                    content.classList.toggle('hidden');
+                    icon.textContent = isVisible ? '+' : '-';
+                } else {
+                    document.getElementById(`content-${i}`).classList.add('hidden');
+                    document.getElementById(`icon-${i}`).textContent = '+';
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

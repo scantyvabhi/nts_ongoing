@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile - NTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/nit.png" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Papa Parse for CSV handling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    
+    <!-- Alpine.js for mobile menu -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .neumorphic-card {
+            background: #f0f0f0;
+            box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+        }
+        
+        .neumorphic-inset {
+            background: #f0f0f0;
+            box-shadow: inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff;
+        }
+        
+        .neumorphic-button {
+            background: #f0f0f0;
+            box-shadow: 4px 4px 8px #bebebe, -4px -4px 8px #ffffff;
+        }
+        
+        .neumorphic-button:hover {
+            background: #b4fff5;
+        }
+        
+        .back-button {
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body class="bg-[#f0f0f0] min-h-screen">
+    <!-- Navbar Section ===== -->
+    <section class="hidden lg:flex justify-center pt-6 px-2">
+        <!-- Outer Wrapper with Bulged Border -->
+        <div class="outer-bulge w-[86vw] fixed z-50 max-w-7xl rounded-l-full rounded-r-full p-1 bg-[#f0f0f0]">
+            <!-- Inner Inset Navbar -->
+            <nav class="inner-inset bg-[#f0f0f0] rounded-l-full rounded-r-full px-4 py-2 flex justify-between items-center">
+                <!-- Left: Logo and Company Name -->
+                <div class="flex items-center space-x-3">
+                    <img src="./assets/nit.png" alt="Logo" class="w-10 h-10 rounded-full" />
+                    <span class="text-xl font-semibold text-black">Nagarjuna Tech Solutions</span>
+                </div>
+
+                <!-- Center: Navigation Links (Desktop only) -->
+                <ul class="hidden md:flex space-x-2">
+                    <li><a href="index.html" class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">Home</a></li>
+                    <li><a href="aboutus.html" class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">About Us</a></li>
+                    <li><a href="index.html#services" class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">Services</a></li>
+                    <li><a href="contactus.html" class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">Contact Us</a></li>
+                </ul>
+
+                <!-- Right: CTA Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="form.html" class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300" style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;" onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';" onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                        Book a Call
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="focus:outline-none">
+                        <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Mobile & Tablet Navbar (Neumorphic Style) -->
+    <div x-data="{ open: false }" class="lg:hidden fixed top-0 left-0 w-full z-50">
+        <div :class="open ? 'rounded-b-2xl' : ''" class="bg-[#f0f0f0] border-b border-gray-300 px-6 py-4 transition-all duration-600 shadow-lg">
+            <div class="flex justify-between items-center">
+                <!-- Company Logo/Name -->
+                <div class="text-2xl font-bold flex items-center text-gray-700">
+                    <img src="./assets/nit.png" id="mob-nav-logo" class="w-8 h-8 mr-2">Nagarjuna Tech Solutions
+                </div>
+
+                <!-- Hamburger / Close Icon -->
+                <button @click="open = !open" class="focus:outline-none">
+                    <svg x-show="!open" class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg x-show="open" x-cloak class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="open" x-cloak class="mt-4 space-y-2">
+                <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-300">Home</a>
+                <a href="aboutus.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-300">About Us</a>
+                <a href="index.html#services" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-300">Services</a>
+                <a href="contactus.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-300">Contact Us</a>
+                <a href="form.html" class="block px-4 py-2 bg-[#14b8a6] text-white rounded-lg text-center">Book a Call</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee Profile Section -->
+    <main class="max-w-4xl mx-auto px-4 py-8 mt-20">
+        <div class="neumorphic-card rounded-3xl p-8">
+            <!-- Employee Header -->
+            <div class="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8 mb-8">
+                <!-- Profile Image -->
+                <div class="flex-shrink-0">
+                    <img id="employeeImage" src="./assets/ravi.webp" alt="Employee" 
+                         class="w-32 h-32 rounded-2xl object-cover border-4 border-white shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff]">
+                </div>
+                
+                <!-- Basic Info -->
+                <div class="flex-1 text-center md:text-left">
+                    <h1 id="employeeName" class="text-3xl font-bold text-gray-800 mb-2">Ravi Desai</h1>
+                    <p id="employeeDesignation" class="text-xl text-teal-600 font-semibold mb-4">Founder</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <div class="neumorphic-inset rounded-lg px-4 py-2">
+                            <span class="text-sm text-gray-600">Employee ID:</span>
+                            <span id="employeeId" class="ml-2 font-semibold text-gray-800">NTS001</span>
+                        </div>
+                        <div class="neumorphic-inset rounded-lg px-4 py-2">
+                            <span class="text-sm text-gray-600">Department:</span>
+                            <span id="employeeDepartment" class="ml-2 font-semibold text-gray-800">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employee Details Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Personal Information -->
+                <div class="neumorphic-inset rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Personal Information
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Full Name:</span>
+                            <span id="employeeFullName" class="font-semibold text-gray-800">Ravi Desai</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Date of Joining:</span>
+                            <span id="employeeDOJ" class="font-semibold text-gray-800">January 15, 2023</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Working Period:</span>
+                            <span id="employeeWorkingPeriod" class="font-semibold text-gray-800">1 year 8 months</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="neumorphic-inset rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        Contact Information
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Email:</span>
+                            <a id="employeeEmail" href="mailto:ravid4473@gmail.com" class="font-semibold text-teal-600 hover:text-teal-700 transition-colors">ravid4473@gmail.com</a>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Phone:</span>
+                            <a id="employeePhone" href="tel:+919876543210" class="font-semibold text-teal-600 hover:text-teal-700 transition-colors">+91 98765 43210</a>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Designation:</span>
+                            <span id="employeeDesignationDetail" class="font-semibold text-gray-800">Founder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="neumorphic-inset rounded-2xl p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    About
+                </h3>
+                <p id="employeeAbout" class="text-gray-700 leading-relaxed">
+                    Tech visionary with strong expertise in infrastructure and system architecture. Drives innovation and technical excellence. 
+                    Passionate about creating scalable solutions and leading teams towards success. With over 5 years of experience in the tech industry, 
+                    Ravi has been instrumental in building robust systems and fostering a culture of innovation within the organization.
+                </p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="https://www.linkedin.com/in/ravid1069" target="_blank" 
+                   class="neumorphic-button w-12 h-12 rounded-lg flex items-center justify-center hover:bg-[#b4fff5] transition-colors duration-300">
+                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn" class="w-6 h-6">
+                </a>
+                <a href="mailto:ravid4473@gmail.com" 
+                   class="neumorphic-button w-12 h-12 rounded-lg flex items-center justify-center hover:bg-[#b4fff5] transition-colors duration-300">
+                    <img src="./assets/mail icon.png" alt="Email" class="w-6 h-6">
+                </a>
+                <a href="https://www.instagram.com/ravi_desai_007" target="_blank" 
+                   class="neumorphic-button w-12 h-12 rounded-lg flex items-center justify-center hover:bg-[#b4fff5] transition-colors duration-300">
+                    <img src="./assets/instagram for neumorphic icon.png" alt="Instagram" class="w-6 h-6">
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        let employees = {};
+
+        // Load employees from CSV
+        async function loadEmployeesFromCSV() {
+            try {
+                const response = await fetch('./data/employees.csv');
+                const csvText = await response.text();
+                
+                Papa.parse(csvText, {
+                    header: true,
+                    complete: function(results) {
+                        // Convert array to object with id as key
+                        employees = results.data.reduce((acc, emp) => {
+                            if (emp.id) {
+                                acc[emp.id] = emp;
+                            }
+                            return acc;
+                        }, {});
+                        
+                        loadEmployeeData();
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading employees:', error);
+                // Fallback to hardcoded data
+                loadFallbackData();
+            }
+        }
+
+        function loadFallbackData() {
+            employees = {
+                'ravi': {
+                    name: 'Ravi Desai',
+                    fullName: 'Ravi Desai',
+                    designation: 'Founder',
+                    department: 'Leadership',
+                    employeeId: 'NTS001',
+                    doj: 'January 15, 2023',
+                    workingPeriod: '1 year 8 months',
+                    email: 'ravid4473@gmail.com',
+                    phone: '+91 98765 43210',
+                    image: './assets/ravi.webp',
+                    about: 'Tech visionary with strong expertise in infrastructure and system architecture. Drives innovation and technical excellence. Passionate about creating scalable solutions and leading teams towards success. With over 5 years of experience in the tech industry, Ravi has been instrumental in building robust systems and fostering a culture of innovation within the organization.',
+                    linkedin: 'https://www.linkedin.com/in/ravid1069',
+                    instagram: 'https://www.instagram.com/ravi_desai_007'
+                }
+                // Add more fallback data as needed
+            };
+            loadEmployeeData();
+        }
+
+        // Load employee data based on URL parameter
+        function loadEmployeeData() {
+            const employeeId = getUrlParameter('id') || 'ravi';
+            const employee = employees[employeeId];
+            
+            if (employee) {
+                document.getElementById('employeeImage').src = employee.image;
+                document.getElementById('employeeName').textContent = employee.name;
+                document.getElementById('employeeFullName').textContent = employee.fullName;
+                document.getElementById('employeeDesignation').textContent = employee.designation;
+                document.getElementById('employeeDesignationDetail').textContent = employee.designation;
+                document.getElementById('employeeDepartment').textContent = employee.department;
+                document.getElementById('employeeId').textContent = employee.employeeId;
+                document.getElementById('employeeDOJ').textContent = employee.doj;
+                document.getElementById('employeeWorkingPeriod').textContent = employee.workingPeriod;
+                document.getElementById('employeeEmail').textContent = employee.email;
+                document.getElementById('employeeEmail').href = `mailto:${employee.email}`;
+                document.getElementById('employeePhone').textContent = employee.phone;
+                document.getElementById('employeePhone').href = `tel:${employee.phone}`;
+                document.getElementById('employeeAbout').textContent = employee.about;
+                
+                // Update social links
+                const socialLinks = document.querySelectorAll('.neumorphic-button');
+                if (employee.linkedin && employee.linkedin !== '#') {
+                    socialLinks[0].parentElement.href = employee.linkedin;
+                }
+                if (employee.instagram && employee.instagram !== '#') {
+                    socialLinks[2].parentElement.href = employee.instagram;
+                }
+            }
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadEmployeesFromCSV);
+
+        // Mobile menu functionality
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.querySelector('[x-data]');
+        
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                // This will be handled by Alpine.js
+                console.log('Mobile menu toggled');
+            });
+        }
+    </script>
+</body>
+</html> 

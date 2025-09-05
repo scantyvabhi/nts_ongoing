@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>NTS | About Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/nit.png" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="bg-[#f0f0f0] text-gray-700">
+
+    <!-- Navbar Section ===== -->
+    <section class="hidden  lg:flex justify-center pt-6 px-2">
+
+        <!-- Outer Wrapper with Bulged Border -->
+        <div class="outer-bulge w-[86vw] fixed z-50 max-w-7xl rounded-l-full rounded-r-full p-1 bg-[#f0f0f0]">
+
+            <!-- Inner Inset Navbar -->
+            <nav
+                class="inner-inset bg-[#f0f0f0] rounded-l-full rounded-r-full px-4 py-2 flex justify-between items-center">
+
+                <!-- Left: Logo and Company Name -->
+                <div class="flex items-center space-x-3">
+                    <img src="./assets/nit.png" alt="Logo" class="w-10 h-10 rounded-full" />
+                    <span class="text-xl font-semibold text-black">Nagarjuna Tech Solutions</span>
+                </div>
+
+                <!-- Center: Navigation Links (Desktop only) -->
+                <ul class="hidden md:flex space-x-2">
+                    <li><a href="index.html"
+                            class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">
+                            Home
+                        </a></li>
+                    <li><a href="aboutus.html"
+                            class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">
+                            About Us</a></li>
+                    <li><a href="index.html#services"
+                            class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">
+                            Services</a>
+                    </li>
+                    <li><a href="contactus.html"
+                            class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">Contact
+                            Us</a></li>
+                </ul>
+
+                <!-- Right: CTA Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="form.html"
+                        class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300"
+                        style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                        onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                        onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                        Book a Call
+                    </a>
+
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="focus:outline-none">
+                        <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+            </nav>
+        </div>
+    </section>
+
+
+    <!-- Mobile & Tablet Navbar (Neumorphic Style) -->
+    <div x-data="{ open: false }" class="lg:hidden fixed top-0 left-0 w-full z-50">
+        <div :class="open ? 'rounded-b-2xl' : ''"
+            class="bg-[#f0f0f0] border-b border-gray-300 px-6 py-4 transition-all duration-600 shadow-lg">
+            <div class="flex justify-between items-center">
+                <!-- Company Logo/Name -->
+                <div class="text-2xl font-bold flex items-center text-gray-700">
+                    <img src="./assets/nit.png" id="mob-nav-logo">Nagarjuna Tech Solutions
+                </div>
+
+                <!-- Hamburger / Close Icon -->
+                <button @click="open = !open" class="focus:outline-none">
+                    <svg x-show="!open" class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg x-show="open" x-cloak class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor"
+                        stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Dropdown Menu -->
+            <div x-show="open" x-transition class="mt-4 space-y-4">
+                <a href="index.html"
+                    class="block text-center text-xl text-gray-600 hover:text-[#14b8a6] font-medium">Home</a>
+                <a href="aboutus.html"
+                    class="block text-center text-xl text-gray-600 hover:text-[#14b8a6] font-medium">About
+                    Us</a>
+                <a href="./index.html#services"
+                    class="block text-center text-xl text-gray-600 hover:text-[#14b8a6] font-medium">Services</a>
+                <a href="contactus.html"
+                    class="block text-center text-xl text-gray-600 hover:text-[#14b8a6] font-medium">Contact
+                    Us</a>
+
+                <!-- CTA Button -->
+                <a href="form.html"
+                    class="block w-full text-center px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-200 my-8 text-xl"
+                    style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                    onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                    onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                    Book a Call
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- About Us Section -->
+    <section class="py-16 px-6 md:px-16 mt-20 bg-[#f0f0f0] text-gray-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6">About Us</h2>
+            <p class="text-lg leading-relaxed">
+                We are a team of passionate developers, designers, engineers, and problem-solvers committed to
+                delivering high-quality digital solutions. Our mission is to empower businesses with cutting-edge
+                technology, creative design, and reliable support.
+            </p>
+        </div>
+    </section>
+
+    <br id="teambr">
+
+
+    <!-- Our Founders Section -->
+    <section class="py-16 px-4 bg-[#f0f0f0]">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Founders</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-3xl md:max-w-5xl mx-auto mb-8">
+
+            <!-- Founder Card -->
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('ravi')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/ravi.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Ravi Desai</h3>
+                            <p class="text-sm text-gray-600">Founder</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/ravid1069?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:ravid4473@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ravid1069?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/instagram for neumorphic icon.png" alt="Instagram" class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Tech visionary with strong expertise in infrastructure and system architecture. Drives innovation and technical excellence.
+                </p>
+            </div>
+
+
+            <!-- Founder Card -->
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('gaurav')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Gaurav.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Gaurav Kumawat</h3>
+                            <p class="text-sm text-gray-600">Co-Founder</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/gaurav-kumawat2211gk?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="www.linkedin.com/in/gaurav-kumawat2211gk"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:gauravkumawat22ds@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="x.com" class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/gaurav_g.k.22?utm_source=qr&igsh=Nmp0dmoxaGN6encw" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/instagram for neumorphic icon.png" alt="" class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Expert in team management, market strategy, and official operations. Leads ideation, branding, and product launches.
+                </p>
+            </div>
+
+
+
+            <!-- Founder Card -->
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('nandani')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Ceo.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Nandani</h3>
+                            <p class="text-sm text-gray-600">CEO</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="x.com" class="w-6 h-6">
+                                </div>
+                            </a>
+                             
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Oversees daily operations and task execution. Ensures smooth coordination and reports directly to the founders.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- View our Team Button -->
+    </section>
+
+    <!-- Team Section -->
+    <section  class="py-16 px-6 md:px-16 bg-[#f0f0f0] text-gray-800">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-semibold">Meet Our Team</h2>
+            <p class="text-lg mt-2 text-gray-600">The people behind our success</p>
+        </div>
+
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+            <!-- Team Member Card -->
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('vijay')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Vijay.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Vijay Reddy</h3>
+                            <p class="text-sm text-gray-600">Chief Marketing Officer (CMO)</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                             
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Leads branding, outreach, and growth strategies with a sharp focus on market trends.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('judo')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Professional Headshot.png" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Judo</h3>
+                            <p class="text-sm text-gray-600">Chief Technology Officer (CTO)</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://in.linkedin.com/in/judhisthir-b-6a3523360" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:judhisthirbehera87@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Oversees all tech operations and drives innovation across software and hardware domains.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('abhishek')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Abhi.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Abhishek </h3>
+                            <p class="text-sm text-gray-600">Frontend Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/abhivish456/"
+                                target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:scantyvabhishek067@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Builds seamless and user-friendly web interfaces with modern design practices.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('vikas')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Vikas.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Vikas</h3>
+                            <p class="text-sm text-gray-600">Marketing & Java Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/vikas-tak-6733a4306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:takvikas72@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Blends technical Java skills with marketing insight to support product reach and performance.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('shubhashu')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/shubanshu.jpg" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Shubhashu</h3>
+                            <p class="text-sm text-gray-600">Social Media & Python Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/shubhanshu-kumawat-81b506298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:kumawatanshu913@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Manages our digital presence while building smart solutions with Python.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('himanshi')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/proffessional headshot of a girl with specs.png" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Himanshi</h3>
+                            <p class="text-sm text-gray-600">Java Full Stack Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/himanshi-sharma731/" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Handles end-to-end Java development with expertise in both frontend and backend.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('misbha')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/proffessional headshot of a girl with specs.png" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Misbha</h3>
+                            <p class="text-sm text-gray-600">AI Engineer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/misba-khanum-b479772a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:mkhanum677@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Designs intelligent AI models and machine learning solutions for real-world applications.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('divya')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/proffessional headshot of a girl with specs.png" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Divya</h3>
+                            <p class="text-sm text-gray-600">Designer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/divya-895552311" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:d86147685@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                             
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Creates clean, creative visuals and product designs that align with brand identity.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('anurag')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/anurag.jpg" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Anurag</h3>
+                            <p class="text-sm text-gray-600">Automation Engineer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/anurag-kumawat-71b84721b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:anuragkumawat1603@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                             
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Specializes in system automation and streamlining development workflows.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('harsh')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/harsh.jpg" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Harsh</h3>
+                            <p class="text-sm text-gray-600">DevOps & DevSecOps Engineer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/harsh-badiwal-290211290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:badiwal.harsh200@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                             
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Ensures reliable deployment, CI/CD, and infrastructure security across all projects.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('darshan')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Professional Headshot.png" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Darshan</h3>
+                            <p class="text-sm text-gray-600">Backend Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/darshan-p-2bb14925a/" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                             
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Develops secure, scalable backend systems and ensures API performance.
+                </p>
+            </div>
+
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('pranjal')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/proffessional headshot of a girl with specs.png" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Pranjal</h3>
+                            <p class="text-sm text-gray-600">UI/UX Design Intern</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:pranjalshirsath5@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                             
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Supports the design team with creative Figma-based UI/UX designs, focusing on user-centric and visually engaging interfaces.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Us -->
+    <section class="contact-section"
+        style="background-color: #f0f0f0; padding:60px 0; display: flex; justify-content: center;">
+        <div class="contact-container">
+            <button class="contact-title">Contact Us</button>
+            <h2 class="contact-heading">Let's stay connected</h2>
+            <p class="contact-subtext">Have questions or feedback? Reach out, and we'll get back to you in no time.</p>
+
+            <form class="contact-form" id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="submit-button">SUBMIT</button>
+            </form>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">© 2025 Nagarjuna Tech Solutions. All rights reserved.</p>
+            <div class="social-links">
+                <!-- <a href="#" class="social-icon"><img src="facebook-icon.png" alt="Facebook" /></a> -->
+                <a href="mailto:nagarjunatechsolutions@gmail.com" target="_blank" data-tooltip="Mail Us"
+                    class="social-icon"><img src="./assets/mail icon.png" alt="Mail" /></a>
+                <a href="https://www.linkedin.com/company/nagarjunatechsolutions/" target="_blank"
+                    data-tooltip="Linked In" class="social-icon"><img src="./assets/linked in for neumorphic icon.png"
+                        alt="LinkedIn" /></a>
+                <a href="https://www.instagram.com/nts_official2024?igsh=MWg2dW9naGVtdGJ2Zw==" data-tooltip="Instagram"
+                    class="social-icon"><img src="./assets/instagram for neumorphic icon.png" alt="Instagram" /></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ===== Script for Toggle ===== -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.add('slide-down');
+        });
+    </script>
+
+    <!-- Make sure to include Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <!-- Papa Parse for CSV handling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <!-- SCRIPT TO TOGGLE SOCIAL LINKS -->
+    <script>
+        function toggleLinks(btn) {
+            const container = btn.parentElement.querySelector('.social-links');
+            container.classList.toggle('hidden');
+        }
+        
+        // Function to open employee profile page
+        function openEmployeeProfile(employeeId) {
+            window.location.href = `employee.html?id=${employeeId}`;
+        }
+        
+        // Prevent event bubbling for social media links
+        document.addEventListener('DOMContentLoaded', function() {
+            const socialLinks = document.querySelectorAll('.social-links a');
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Handle contact form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleContactSubmission);
+            }
+            
+            // Load employees from CSV
+            loadEmployeesFromCSV();
+        });
+
+        // Handle contact form submission
+        async function handleContactSubmission(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'SUBMITTING...';
+            
+            const submissionData = {
+                id: 'CNT' + Date.now(),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message'),
+                submission_date: new Date().toISOString(),
+                status: 'new'
+            };
+            
+            try {
+                // Try PHP backend first
+                const response = await fetch('./contact_handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submit',
+                        name: submissionData.name,
+                        email: submissionData.email,
+                        message: submissionData.message
+                    })
+                });
+                
+                // Check if response is ok and has content
+                if (response.ok) {
+                    const responseText = await response.text();
+                    if (responseText) {
+                        const result = JSON.parse(responseText);
+                        if (result.success) {
+                            alert('Thank you for your message! We will get back to you soon.');
+                            e.target.reset();
+                            return;
+                        }
+                    }
+                }
+                
+                // If PHP backend fails, use localStorage fallback
+                throw new Error('Backend not available');
+                
+            } catch (error) {
+                console.warn('PHP backend not available, using localStorage fallback:', error);
+                
+                // Fallback to localStorage
+                try {
+                    const existingData = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+                    existingData.push(submissionData);
+                    localStorage.setItem('contactSubmissions', JSON.stringify(existingData));
+                    
+                    alert('Thank you for your message! Your submission has been saved locally. Please note: For full functionality, ensure your server supports PHP.');
+                    e.target.reset();
+                    
+                    // Also log to console for debugging
+                    console.log('Contact submission saved locally:', submissionData);
+                    
+                } catch (localError) {
+                    console.error('Contact form error:', localError);
+                    alert('Sorry, there was an error submitting your message. Please try again or contact us directly at nagarjunatechsolutions@gmail.com');
+                }
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        }
+        
+        // Load employees from CSV and render cards
+        async function loadEmployeesFromCSV() {
+            try {
+                const response = await fetch('./data/employees.csv');
+                const csvText = await response.text();
+                
+                Papa.parse(csvText, {
+                    header: true,
+                    complete: function(results) {
+                        const employees = results.data.filter(emp => emp.id);
+                        renderEmployeeCards(employees);
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading employees:', error);
+                // Fallback to hardcoded cards if CSV fails to load
+                loadFallbackCards();
+            }
+        }
+        
+        function loadFallbackCards() {
+            // This will keep the existing hardcoded cards as fallback
+            console.log('Using fallback employee cards');
+        }
+        
+        function renderEmployeeCards(employees) {
+            // Separate founders and team members
+            const founders = employees.filter(emp => emp.department === 'Leadership' || emp.department === 'Executive');
+            const teamMembers = employees.filter(emp => emp.department !== 'Leadership' && emp.department !== 'Executive');
+            
+            // Render founders section
+            renderFoundersSection(founders);
+            
+            // Render team section
+            renderTeamSection(teamMembers);
+        }
+        
+        function renderFoundersSection(founders) {
+            const foundersContainer = document.querySelector('#teambr').nextElementSibling.querySelector('.grid');
+            if (!foundersContainer) return;
+            
+            foundersContainer.innerHTML = founders.map(emp => `
+                <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300 ${emp.isActive === '0' ? 'hidden' : ''}" onclick="openEmployeeProfile('${emp.id}')">
+                    <div class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+                        <div class="flex items-center space-x-4">
+                            <img src="${emp.image}" alt="Founder" class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">${emp.name}</h3>
+                                <p class="text-sm text-gray-600">${emp.designation}</p>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300" onclick="toggleLinks(this)">
+                                <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                            </div>
+                            <div class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                ${emp.linkedin && emp.linkedin !== '#' ? `<a href="${emp.linkedin}" target="_blank">
+                                    <div class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                        <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn" class="w-6 h-6">
+                                    </div>
+                                </a>` : ''}
+                                ${emp.email ? `<a href="mailto:${emp.email}" target="_blank">
+                                    <div class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                        <img src="./assets/mail icon.png" alt="Email" class="w-6 h-6">
+                                    </div>
+                                </a>` : ''}
+                                ${emp.instagram && emp.instagram !== '#' ? `<a href="${emp.instagram}" target="_blank">
+                                    <div class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                        <img src="./assets/instagram for neumorphic icon.png" alt="Instagram" class="w-6 h-6">
+                                    </div>
+                                </a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                        ${emp.about}
+                    </p>
+                </div>
+            `).join('');
+        }
+        
+        function renderTeamSection(teamMembers) {
+            const teamContainer = document.querySelector('.grid.sm\\:grid-cols-2.md\\:grid-cols-3.lg\\:grid-cols-3');
+            if (!teamContainer) return;
+            
+            teamContainer.innerHTML = teamMembers.map(emp => `
+                <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300 ${emp.isActive === '0' ? 'hidden' : ''}" onclick="openEmployeeProfile('${emp.id}')">
+                    <div class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+                        <div class="flex items-center space-x-4">
+                            <img src="${emp.image}" alt="Team Member" class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">${emp.name}</h3>
+                                <p class="text-sm text-gray-600">${emp.designation}</p>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300" onclick="toggleLinks(this)">
+                                <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                            </div>
+                            <div class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                ${emp.linkedin && emp.linkedin !== '#' ? `<a href="${emp.linkedin}" target="_blank">
+                                    <div class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                        <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn" class="w-6 h-6">
+                                    </div>
+                                </a>` : ''}
+                                ${emp.email ? `<a href="mailto:${emp.email}" target="_blank">
+                                    <div class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                        <img src="./assets/mail icon.png" alt="Email" class="w-6 h-6">
+                                    </div>
+                                </a>` : ''}
+                                ${emp.instagram && emp.instagram !== '#' ? `<a href="${emp.instagram}" target="_blank">
+                                    <div class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                        <img src="./assets/instagram for neumorphic icon.png" alt="Instagram" class="w-6 h-6">
+                                    </div>
+                                </a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                        ${emp.about}
+                    </p>
+                </div>
+            `).join('');
+        }
+    </script>
+
+</body>
+
+</html>

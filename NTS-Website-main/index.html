@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>NTS | Turning Vision into Reality</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/nit.png" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="bg-[#f0f0f0] text-gray-700">
+
+    <!-- Navbar Section ===== -->
+    <section class="hidden  lg:flex justify-center pt-6 px-1">
+
+        <!-- Outer Wrapper with Bulged Border -->
+        <div class="outer-bulge w-[86vw] fixed z-50 max-w-7xl rounded-l-full rounded-r-full p-1 bg-[#f0f0f0]">
+
+            <!-- Inner Inset Navbar -->
+            <nav
+                class="inner-inset bg-[#f0f0f0] rounded-l-full rounded-r-full px-4 py-2 flex justify-between items-center">
+
+                <!-- Left: Logo and Company Name -->
+                <div class="flex items-center space-x-3">
+                    <img src="./assets/nit.png" alt="Logo" class="w-10 h-10 rounded-full" />
+                    <span class="text-xl font-semibold text-black">Nagarjuna Tech Solutions</span>
+                </div>
+
+                <!-- Center: Navigation Links (Desktop only) -->
+                <ul class="hidden md:flex space-x-2">
+                    <li><a href="index.html"
+                            class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">
+                            Home </a></li>
+                    <li><a href="aboutus.html"
+                            class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">
+                            About Us</a></li>
+                    <li><a href="#services"
+                            class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">
+                            Services</a></li>
+                    <li><a href="contactus.html"
+                            class="px-4 py-1 rounded-full transition-all duration-300 hover:bg-[#f0f0f0] hover:shadow-[4px_4px_10px_#d1d9e6,-4px_-4px_10px_#ffffff] hover:text-[#0d9488]">Contact
+                            Us</a></li>
+                </ul>
+
+                <!-- Right: CTA Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="form.html"
+                        class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300"
+                        style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                        onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                        onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                        Book a Call
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="focus:outline-none">
+                        <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+            </nav>
+        </div>
+    </section>
+
+    <!-- Mobile & Tablet Navbar (Neumorphic Style) -->
+    <div x-data="{ open: false }" class="lg:hidden fixed top-0 left-0 w-full z-50">
+        <div :class="open ? 'rounded-b-2xl' : ''"
+            class="bg-[#f0f0f0] border-b border-gray-300 px-6 py-4 transition-all duration-600 shadow-lg">
+            <div class="flex justify-between items-center">
+                <!-- Company Logo/Name -->
+                <div class="text-2xl font-bold flex items-center text-gray-700">
+                    <img src="./assets/nit.png" id="mob-nav-logo">Nagarjuna Tech Solutions
+                </div>
+
+                <!-- Hamburger / Close Icon -->
+                <button @click="open = !open" class="focus:outline-none">
+                    <svg x-show="!open" class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg x-show="open" x-cloak class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor"
+                        stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Dropdown Menu -->
+            <div x-show="open" x-transition class="mt-4 space-y-4">
+                <a href="index.html"
+                    class="block text-center text-xl text-gray-600 hover:text-[#14b8a6] font-medium">Home</a>
+                <a href="aboutus.html"
+                    class="block text-center text-xl text-gray-600 hover:text-[#14b8a6] font-medium">About
+                    Us</a>
+                <a href="#services"
+                    class="block text-center text-xl text-gray-600 hover:text-[#14b8a6] font-medium">Services</a>
+                <a href="contactus.html"
+                    class="block text-center text-xl text-gray-600 hover:text-[#14b8a6] font-medium">Contact
+                    Us</a>
+
+                <!-- CTA Button -->
+                <a href="form.html"
+                    class="block w-full text-center px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-200 my-8 text-xl"
+                    style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                    onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                    onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                    Book a Call
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+        class="w-full px-4 py-16 flex flex-col items-center justify-center text-center bg-[#f0f0f0] mt-20 md:mt-16">
+        <!-- Circular Image with Convex Border -->
+        <div
+            class="relative w-32 h-32 md:w-24 md:h-24 md:mb-12 rounded-full bg-[#f0f0f0] flex items-center justify-center shadow-[inset_0_0_0_0]">
+            <!-- Convex border using absolute div -->
+            <div
+                class="absolute inset-0 rounded-full border-[0px] border-[#e0e0e0] shadow-[15px_15px_20px_rgba(190,190,190,0.8),-15px_-15px_20px_white]">
+            </div>
+            <img src="./assets/nit.png" alt="Company Logo"
+                class="w-24 h-24 md:w-20 md:h-20 rounded-full object-cover z-10" />
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-4xl md:text-5xl font-bold mt-8 text-gray-800">Welcome to Nagarjuna <span
+                class="text-[#0d9488]">Tech Solutions</span></h1>
+
+        <!-- Tagline -->
+        <p class="text-lg md:text-2xl text-gray-600 mt-3">Turning Vision Into Reality.</p>
+
+        <!-- Small Description -->
+        <p class="text-md md:text-base text-gray-500 mt-4 max-w-2xl">
+            From strategy to execution, we turn innovative ideas into powerful digital products.
+        </p>
+    </section>
+
+    <!-- Subscription Card -->
+    <section class="flex justify-center items-center w-full px-4 py-16 bg-[#f0f0f0]">
+        <div class="bg-[#f0f0f0] p-8 rounded-2xl w-full max-w-3xl text-center
+              shadow-[inset_0_0_5px_#d3d3d3,0_0_25px_rgba(0,0,0,0.05)]">
+
+            <!-- Tagline -->
+            <h2 class="text-2xl font-semibold text-gray-800">Get Updates on Our Latest Innovations</h2>
+
+            <!-- Description -->
+            <p class="text-sm text-gray-500 mt-2">
+                Get our best tech updates and exclusive tips delivered to your inbox.
+                <br />Subscribe now and never miss an idea.
+            </p>
+
+            <!-- Email Input -->
+            <div class="mt-6 mb-4">
+                <div class="mt-6 mb-4">
+                    <input type="email" placeholder="Enter your email"
+                        class="w-full py-4 px-8 rounded-full bg-[#f0f0f0] text-gray-800 border border-2 shadow-[inset_5px_5px_16px_#d1d9e6,inset_-5px_-5px_16px_#ffffff,6px_6px_12px_rgba(0,0,0,0.05)]  focus:outline-none" />
+                </div>
+
+                <!-- Join Button -->
+                <button class="mt-2 px-6 py-2 rounded-full bg-[#f0f0f0] text-teal-600 font-semibold
+             shadow-[6px_6px_10px_#d3d3d3,-6px_-6px_10px_white]
+             hover:bg-teal-500 hover:text-white transition duration-300">
+                    Get Notified
+                </button>
+            </div>
+    </section>
+
+    <!-- Social Media Icons -->
+    <div class="flex justify-center gap-2 md:gap-6 mt-8">
+        <!-- Social Media Tile -->
+        <a href="mailto:nagarjunatechsolutions@gmail.com" target="_blank">
+            <div class="w-16 h-16 rounded-3xl bg-[#f0f0f0] flex items-center justify-center
+              shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]
+              hover:bg-[#b4fff5] transition duration-300 ease-in-out cursor-pointer">
+                <img src="./assets/mail icon.png" alt="Social 1" class="w-8 h-8" />
+            </div>
+        </a>
+
+
+        <a href="https://www.linkedin.com/company/nagarjunatechsolutions/" target="_blank">
+            <div class="w-16 h-16 rounded-3xl bg-[#f0f0f0] flex items-center justify-center
+              shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]
+              hover:bg-[#b4fff5] transition duration-300 ease-in-out cursor-pointer">
+                <img src="./assets/linked in for neumorphic icon.png" alt="Social 2" class="w-8 h-8" />
+            </div>
+        </a>
+
+        <a href="https://www.instagram.com/nts_official2024?igsh=MWg2dW9naGVtdGJ2Zw==" target="_blank">
+            <div class="w-16 h-16 rounded-3xl bg-[#f0f0f0] flex items-center justify-center
+              shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]
+              hover:bg-[#b4fff5] transition duration-300 ease-in-out cursor-pointer">
+                <img src="./assets/instagram for neumorphic icon.png" alt="Social 3" class="w-8 h-8" />
+            </div>
+        </a>
+
+    </div>
+
+    <!-- Our Services -->
+    <section id="services" class="py-12 my-20 px-4 bg-[#f0f0f0]">
+        <h2 class="text-4xl font-semibold text-center mb-16">Our Services</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-5xl mx-auto">
+            <!-- Service Cards -->
+            <div
+                class="bg-[#f0f0f0] p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.1)] text-center transition-transform duration-300 hover:-translate-y-2">
+                <!-- Outer neumorphic ring -->
+                <div class="relative w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center
+                  bg-[#f0f0f0] shadow-[6px_6px_16px_#d1d9e6,-6px_-6px_16px_#ffffff]">
+                    <div class="w-24 h-24 rounded-full overflow-hidden 
+                    bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]">
+                        <img src="./assets/phone in hand .jpg" alt="Service" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Software & Web Development</h3>
+                <p class="text-sm text-gray-600 mb-8">Crafting robust and scalable websites, applications, and custom
+                    software solutions tailored to your needs.
+                </p>
+                <a href="form.html"
+                    class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300"
+                    style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                    onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                    onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                    Get a Quote
+                </a>
+            </div>
+
+            <div
+                class="bg-[#f0f0f0] p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.1)] text-center transition-transform duration-300 hover:-translate-y-2">
+                <div class="relative w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center
+                  bg-[#f0f0f0] shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]">
+                    <div class="w-24 h-24 rounded-full overflow-hidden 
+                    bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]">
+                        <img src="./assets/graphic designing icon.png" alt="Service"
+                            class="w-full h-full object-contain" />
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Graphic and Product Designing</h3>
+                <p class="text-sm text-gray-600 mb-8">Innovative design solutions that blend creativity with
+                    functionality for digital and physical products.</p>
+                <a href="form.html"
+                    class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300"
+                    style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                    onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                    onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                    Get a Quote
+                </a>
+            </div>
+
+            <div
+                class="bg-[#f0f0f0] p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.1)] text-center transition-transform duration-300 hover:-translate-y-2">
+                <div class="relative w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center
+                  bg-[#f0f0f0] shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]">
+                    <div class="w-24 h-24 rounded-full overflow-hidden 
+                    bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]">
+                        <img src="./assets/robotics icon.png" alt="Service" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">IoT & Robotics</h3>
+                <p class="text-sm text-gray-600 mb-8">Smart hardware systems designed to automate and simplify
+                    real-world problems using cutting-edge technology and quality components.</p>
+                <a href="form.html"
+                    class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300"
+                    style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                    onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                    onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                    Get a Quote
+                </a>
+            </div>
+
+            <div
+                class="bg-[#f0f0f0] p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.1)] text-center transition-transform duration-300 hover:-translate-y-2">
+                <div class="relative w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center
+                  bg-[#f0f0f0] shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]">
+                    <div class="w-24 h-24 rounded-full overflow-hidden 
+                    bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]">
+                        <img src="./assets/electronics icon.jpg" alt="Service" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Electronics</h3>
+                <p class="text-sm text-gray-600 mb-8">From custom PCB design and prototyping to complete embedded system
+                    development, we engineer efficient electronic solutions.</p>
+                <a href="form.html"
+                    class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300"
+                    style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                    onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                    onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                    Get a Quote
+                </a>
+            </div>
+
+            <div
+                class="bg-[#f0f0f0] p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.1)] text-center transition-transform duration-300 hover:-translate-y-2">
+                <div class="relative w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center
+                  bg-[#f0f0f0] shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]">
+                    <div class="w-24 h-24 rounded-full overflow-hidden 
+                    bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]">
+                        <img src="./assets/cybersecurity icon.png" alt="Service" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Cyber Security</h3>
+                <p class="text-sm text-gray-600 mb-8">Protect your digital assets with our top-tier security audits,
+                    tools, and ethical hacking expertise and Experience.</p>
+                <a href="form.html"
+                    class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300"
+                    style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                    onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                    onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                    Get a Quote
+                </a>
+            </div>
+
+            <div
+                class="bg-[#f0f0f0] p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.1)] text-center transition-transform duration-300 hover:-translate-y-2">
+                <div class="relative w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center
+                  bg-[#f0f0f0] shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]">
+                    <div class="w-24 h-24 rounded-full overflow-hidden 
+                    bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]">
+                        <img src="./assets/teaching icon.jpg" alt="Service" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Internships and Training</h3>
+                <p class="text-sm text-gray-600 mb-8">Empowering next generation through real-world projects,
+                    mentorship, and career-oriented learning.</p>
+                <a href="form.html"
+                    class="px-5 py-2 rounded-full font-semibold text-[#14b8a6] bg-[#f0f0f0] transition-all duration-300"
+                    style="box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;"
+                    onmouseover="this.style.backgroundColor='#14b8a6'; this.style.color='white'; this.style.boxShadow='inset 5px 5px 10px #0d9488, inset -5px -5px 10px #2dd4bf';"
+                    onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.color='#14b8a6'; this.style.boxShadow='5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff';">
+                    Get a Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Expertise -->
+    <section class="px-6 py-12 md:px-16 bg-[#f0f0f0] text-gray-800">
+
+        <div class="flex justify-center mb-6">
+            <!-- Outer Neumorphic Border -->
+            <div class="p-2 rounded-full shadow-[4px_4px_10px_#ffffff,-4px_-4px_10px_#bebebe] bg-[#f0f0f0]">
+                <!-- Inner Button -->
+                <button
+                    class="px-6 py-2 text-lg font-semibold rounded-full shadow-[4px_4px_10px_#bebebe,-4px_-4px_10px_#ffffff] bg-[#f0f0f0] text-gray-800 transition-all duration-300 hover:bg-[#b4fff5] hover:shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff]">
+                    Our Expertise
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Main Heading (Shortened) -->
+        <h2 class="text-2xl lg:text-4xl font-bold text-center mb-4 leading-snug">
+            Solutions That Drive <span class="text-[#0d9488]">Innovation</span> and <span
+                class="text-[#0d9488]">Growth</span>
+        </h2>
+
+        <!-- Subheading -->
+        <p class="text-center text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
+            We create high-quality, scalable, and secure tech solutions tailored for real-world challenges and business
+            growth.
+        </p>
+
+
+        <!-- TECHNOLOGY CIRCLE SECTION -->
+        <div class="flex justify-center items-center my-20">
+            <div class="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] bg-[#f0f0f0] rounded-full 
+              shadow-[inset_6px_6px_12px_#d1d1d1,inset_-6px_-6px_12px_#ffffff]">
+
+                <!-- Double Border Ring -->
+                <div class="absolute top-4 left-4 right-4 bottom-4 rounded-full border-4 border-[#f0f0f0] 
+                shadow-[inset_4px_4px_10px_#d1d1d1,inset_-4px_-4px_10px_#ffffff] z-0">
+                </div>
+
+                <!-- Center Company Logo -->
+                <div class="absolute top-1/2 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2">
+                    <img src="./assets/nit.png" alt="Company Logo" class="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+                </div>
+
+                <div class="ripple-container">
+                    <div class="ripple-circle ripple1"></div>
+                    <div class="ripple-circle ripple2"></div>
+                    <div class="ripple-circle ripple3"></div>
+                    <div class="ripple-circle ripple4"></div>
+                    <div class="ripple-circle ripple5"></div>
+                    <div class="ripple-circle ripple6"></div>
+                </div>
+
+                <!-- Neumorphic Tech Tiles -->
+                <!-- React -->
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div class="w-14 h-14 rounded-xl bg-[#f0f0f0] bg-gray-800 
+                  shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff] flex items-center justify-center ">
+                        <img src="./assets/react.png" alt="React" class="w-8 h-8" />
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="absolute top-[25%] left-[90%] transform -translate-x-1/2 -translate-y-1/2">
+                    <div class="w-14 h-14 rounded-xl bg-[#f0f0f0] bg-yellow-300 
+                  shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff] flex items-center justify-center">
+                        <img src="./assets/javascript.png" alt="JavaScript" class="w-8 h-8" />
+                    </div>
+                </div>
+
+                <!-- MongoDB -->
+                <div class="absolute top-[72%] left-[90%] transform -translate-x-1/2 -translate-y-1/2">
+                    <div class="w-14 h-14 rounded-xl bg-[#f0f0f0] 
+                  shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff] flex items-center justify-center">
+                        <img src="./assets/mongodb.png" alt="MongoDB" class="w-8 h-8" />
+                    </div>
+                </div>
+
+                <!-- PHP -->
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+                    <div class="w-14 h-14 rounded-xl bg-[#4747A8]
+                  shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff] flex items-center justify-center">
+                        <img src="./assets/php.png" alt="PHP" class="w-8 h-8" />
+                    </div>
+                </div>
+
+                <!-- AI -->
+                <div class="absolute bottom-[28%] left-[10%] transform -translate-x-1/2 translate-y-1/2">
+                    <div class="w-14 h-14 rounded-xl bg-[#f0f0f0] 
+                  shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff] flex items-center justify-center">
+                        <img src="./assets/ai.png" alt="AI" class="w-8 h-8" />
+                    </div>
+                </div>
+
+                <!-- Tailwind -->
+                <div class="absolute top-[25%] left-[10%] transform -translate-x-1/2 -translate-y-1/2">
+                    <div class="w-14 h-14 rounded-xl bg-gray-800 
+                  shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff] flex items-center justify-center">
+                        <img src="./assets/tailwind.png" alt="Tailwind CSS" class="w-8 h-8" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Our Founders Section -->
+    <section class="py-16 px-4 bg-[#f0f0f0]">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Founders</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-3xl md:max-w-5xl mx-auto mb-8">
+
+            <!-- Founder Card -->
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('ravi')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/ravi.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Ravi Desai</h3>
+                            <p class="text-sm text-gray-600">Founder</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/ravid1069?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:ravid4473@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="E Mail" class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/ravi_desai_007?igsh=MWR0bGNldXV4N2Izaw=="
+                                target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/instagram for neumorphic icon.png" alt="Instagram"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Tech visionary with strong expertise in infrastructure and system architecture. Drives innovation
+                    and technical excellence.
+                </p>
+            </div>
+
+
+            <!-- Founder Card -->
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('gaurav')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Gaurav.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Gaurav Kumawat</h3>
+                            <p class="text-sm text-gray-600">Co-Founder</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="https://www.linkedin.com/in/gaurav-kumawat2211gk?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="mailto:gauravkumawat22ds@gmail.com" target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="x.com" class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/gaurav_g.k.22?utm_source=qr&igsh=Nmp0dmoxaGN6encw"
+                                target="_blank">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/instagram for neumorphic icon.png" alt="Instagram"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Expert in team management, market strategy, and official operations. Leads ideation, branding, and
+                    product launches.
+                </p>
+            </div>
+
+
+
+            <!-- Founder Card -->
+            <div class="relative bg-[#f0f0f0] rounded-2xl p-6 shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] cursor-pointer hover:shadow-[12px_12px_20px_#bebebe,-12px_-12px_20px_#ffffff] transition-shadow duration-300" onclick="openEmployeeProfile('nandani')">
+
+                <!-- Inner Card (Profile Info) -->
+                <div
+                    class="flex justify-between items-center rounded-xl p-4 mb-6 bg-[#f0f0f0] shadow-[inset_4px_4px_8px_#bebebe,inset_-4px_-4px_8px_#ffffff] relative z-10">
+
+                    <!-- Left: Image + Name -->
+                    <div class="flex items-center space-x-4">
+                        <img src="./assets/Ceo.webp" alt="Founder"
+                            class="w-14 h-14 rounded-xl object-cover border border-gray-300">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Nandani</h3>
+                            <p class="text-sm text-gray-600">CEO</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Link Button -->
+                    <div class="relative group">
+                        <!-- Main Link Icon -->
+                        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] cursor-pointer hover:bg-[#b4fff5] transition-colors duration-300"
+                            onclick="toggleLinks(this)">
+                            <img src="./assets/link icon.png" alt="Links" class="w-6 h-6">
+                        </div>
+
+                        <!-- Sliding Social Icons -->
+                        <div
+                            class="absolute top-full right-0 mt-2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="#">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/linked in for neumorphic icon.png" alt="LinkedIn"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/mail icon.png" alt="x.com" class="w-6 h-6">
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div
+                                    class="w-10 h-10 mt-2 flex items-center justify-center rounded-lg bg-[#f0f0f0] shadow-[4px_4px_8px_#bebebe,-4px_-4px_8px_#ffffff] hover:bg-[#b4fff5] transition-colors duration-300">
+                                    <img src="./assets/instagram for neumorphic icon.png" alt="Instagram"
+                                        class="w-6 h-6">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-center text-gray-700 text-sm leading-relaxed px-2">
+                    Oversees daily operations and task execution. Ensures smooth coordination and reports directly to
+                    the founders.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- View our Team Button -->
+        <a href="./aboutus.html#teambr" class="flex justify-center">
+            <button class="mt-2 px-6 py-2 rounded-full bg-[#f0f0f0] text-teal-600 font-semibold
+             shadow-[6px_6px_10px_#d3d3d3,-6px_-6px_10px_white]
+             hover:bg-teal-500 hover:text-white transition duration-300">
+                View our Team
+            </button>
+        </a>
+    </section>
+
+
+    <!-- Our Partners Section -->
+    <section class="py-12 bg-[#f0f0f0] text-center">
+        <h2 class="text-3xl font-semibold mb-2 text-gray-800">Our Partners</h2>
+        <p class="text-gray-600 mb-10 text-sm">We collaborate with industry leaders and innovators.</p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+            <!-- Partner Tile 1 -->
+            <div
+                class="bg-[#f0f0f0] border-2 border-gray-300 shadow-lg rounded-2xl p-4 flex items-center justify-center">
+                <img src="./assets/collab img1.png" alt="Partner 1" class="max-h-12 object-contain" />
+            </div>
+
+            <!-- Partner Tile 2 -->
+            <div
+                class="bg-[#f0f0f0] border-2 border-gray-300 shadow-lg rounded-2xl p-4 flex items-center justify-center">
+                <img src="./assets/collab img2.png" alt="Partner 2" class="max-h-12 object-contain" />
+            </div>
+
+            <!-- Partner Tile 3 -->
+            <div
+                class="bg-[#f0f0f0] border-2 border-gray-300 shadow-lg rounded-2xl p-4 flex items-center justify-center">
+                <img src="./assets/collab img3.png" alt="Partner 3" class="max-h-12 object-contain" />
+            </div>
+
+            <!-- Partner Tile 4 -->
+            <div
+                class="bg-[#f0f0f0] border-2 border-gray-300 shadow-lg rounded-2xl p-4 flex items-center justify-center">
+                <img src="./assets/collab img4.png" alt="Partner 4" class="max-h-12 object-contain" />
+            </div>
+
+            <!-- Partner Tile 5 -->
+            <div
+                class="bg-[#f0f0f0] border-2 border-gray-300 shadow-lg rounded-2xl p-4 flex items-center justify-center">
+                <img src="./assets/collab img5.png" alt="Partner 5" class="max-h-12 object-contain" />
+            </div>
+
+            <!-- Partner Tile 6 -->
+            <div
+                class="bg-[#f0f0f0] border-2 border-gray-300 shadow-lg rounded-2xl p-4 flex items-center justify-center">
+                <img src="./assets/collab img6.png" alt="Partner 6" class="max-h-12 object-contain" />
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="flex justify-center items-center py-16 px-8 bg-[#f0f0f0]">
+        <div
+            class="w-[90vw] md:w-[70vw] rounded-2xl p-6 shadow-[inset_-5px_-5px_15px_#ffffff,inset_5px_5px_15px_#d1d9e6] bg-[#f0f0f0]">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Frequently Asked Questions</h2>
+
+            <!-- FAQ Item 1 -->
+            <div x-data="{ open: true }" class="mb-4 rounded-xl transition-all duration-300"
+                :class="open ? 'shadow-[inset_5px_5px_10px_#d1d9e6,inset_-5px_-5px_10px_#ffffff]' : 'shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff]'">
+                <button @click="open = !open" class="w-full text-left p-4 flex justify-between items-center">
+                    <span class="text-lg font-semibold text-gray-700 hover:text-[#0d9488]">What services does Nagarjuna
+                        Tech Solutions Pvt. Ltd. offer?</span>
+                    <span class="text-2xl text-gray-500 transition-transform duration-300"
+                        x-text="open ? 'x' : '+'"></span>
+                </button>
+                <div x-show="open" x-collapse class="px-4 pb-4 text-gray-600 text-sm">
+                    We provide a wide range of tech services including Software & Web Development, Graphic & Product
+                    Designing, IoT & Robotics, Electronics, Cybersecurity, and Internship & Training Programs.
+                </div>
+            </div>
+
+            <!-- FAQ Item 2-->
+            <div x-data="{ open: false }" class="mb-4 rounded-xl transition-all duration-300"
+                :class="open ? 'shadow-[inset_5px_5px_10px_#d1d9e6,inset_-5px_-5px_10px_#ffffff]' : 'shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff]'">
+                <button @click="open = !open" class="w-full text-left p-4 flex justify-between items-center">
+                    <span class="text-lg font-semibold text-gray-700 hover:text-[#0d9488]">Who can benefit from your
+                        services?</span>
+                    <span class="text-2xl text-gray-500 transition-transform duration-300"
+                        x-text="open ? 'x' : '+'"></span>
+                </button>
+                <div x-show="open" x-collapse class="px-4 pb-4 text-gray-600 text-sm">
+                    Startups, agencies, enterprises, and individuals looking for reliable and innovative tech solutions
+                    or training can benefit from our customized offerings.
+                </div>
+            </div>
+
+            <!-- FAQ Item 3-->
+            <div x-data="{ open: false }" class="mb-4 rounded-xl transition-all duration-300"
+                :class="open ? 'shadow-[inset_5px_5px_10px_#d1d9e6,inset_-5px_-5px_10px_#ffffff]' : 'shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff]'">
+                <button @click="open = !open" class="w-full text-left p-4 flex justify-between items-center">
+                    <span class="text-lg font-semibold text-gray-700 hover:text-[#0d9488]">How do I start a project or
+                        request a service?</span>
+                    <span class="text-2xl text-gray-500 transition-transform duration-300"
+                        x-text="open ? 'x' : '+'"></span>
+                </button>
+                <div x-show="open" x-collapse class="px-4 pb-4 text-gray-600 text-sm">
+                    You can contact us through our website form, email, or phone. We’ll schedule a consultation to
+                    understand your needs and provide a tailored proposal and quote.
+                </div>
+            </div>
+
+            <!-- FAQ Item 4-->
+            <div x-data="{ open: false }" class="mb-4 rounded-xl transition-all duration-300"
+                :class="open ? 'shadow-[inset_5px_5px_10px_#d1d9e6,inset_-5px_-5px_10px_#ffffff]' : 'shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff]'">
+                <button @click="open = !open" class="w-full text-left p-4 flex justify-between items-center">
+                    <span class="text-lg font-semibold text-gray-700 hover:text-[#0d9488]">Do you offer customized
+                        solutions or only standard packages?</span>
+                    <span class="text-2xl text-gray-500 transition-transform duration-300"
+                        x-text="open ? 'x' : '+'"></span>
+                </button>
+                <div x-show="open" x-collapse class="px-4 pb-4 text-gray-600 text-sm">
+                    We specialize in custom solutions. Every project is designed around your specific requirements,
+                    whether it's software, hardware, or design-related.
+                </div>
+            </div>
+
+            <!-- FAQ Item 5-->
+            <div x-data="{ open: false }" class="mb-4 rounded-xl transition-all duration-300"
+                :class="open ? 'shadow-[inset_5px_5px_10px_#d1d9e6,inset_-5px_-5px_10px_#ffffff]' : 'shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff]'">
+                <button @click="open = !open" class="w-full text-left p-4 flex justify-between items-center">
+                    <span class="text-lg font-semibold text-gray-700 hover:text-[#0d9488]">Are internships available,
+                        and who can apply?</span>
+                    <span class="text-2xl text-gray-500 transition-transform duration-300"
+                        x-text="open ? 'x' : '+'"></span>
+                </button>
+                <div x-show="open" x-collapse class="px-4 pb-4 text-gray-600 text-sm">
+                    Yes! We offer internships in development, cybersecurity, design, robotics, and electronics.
+                    Students, freshers, and career-switchers are welcome to apply and gain real-world experience.
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Us -->
+    <section class="contact-section"
+        style="background-color: #f0f0f0; padding:60px 0; display: flex; justify-content: center;">
+        <div class="contact-container">
+            <button class="contact-title">Contact Us</button>
+            <h2 class="contact-heading">Let's stay connected</h2>
+            <p class="contact-subtext">Have questions or feedback? Reach out, and we'll get back to you in no time.</p>
+
+            <form class="contact-form" id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="submit-button">SUBMIT</button>
+            </form>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">© 2025 Nagarjuna Tech Solutions. All rights reserved.</p>
+            <div class="social-links">
+                <!-- <a href="#" class="social-icon"><img src="facebook-icon.png" alt="Facebook" /></a> -->
+                <a href="mailto:nagarjunatechsolutions@gmail.com" target="_blank" data-tooltip="Mail Us"
+                    class="social-icon"><img src="./assets/mail icon.png" alt="Mail" /></a>
+                <a href="https://www.linkedin.com/company/nagarjunatechsolutions/" target="_blank"
+                    data-tooltip="Linked In" class="social-icon"><img src="./assets/linked in for neumorphic icon.png"
+                        alt="LinkedIn" /></a>
+                <a href="https://www.instagram.com/nts_official2024?igsh=MWg2dW9naGVtdGJ2Zw==" data-tooltip="Instagram"
+                    class="social-icon"><img src="./assets/instagram for neumorphic icon.png" alt="Instagram" /></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ===== Script for Toggle ===== -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.add('slide-down');
+        });
+    </script>
+
+    <!-- Make sure to include Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+        <!-- SCRIPT TO TOGGLE SOCIAL LINKS -->
+    <script>
+        function toggleLinks(btn) {
+            const container = btn.parentElement.querySelector('.social-links');
+            container.classList.toggle('hidden');
+        }
+
+        // Function to open employee profile page
+        function openEmployeeProfile(employeeId) {
+            window.location.href = `employee.html?id=${employeeId}`;
+        }
+
+        // Prevent event bubbling for social media links
+        document.addEventListener('DOMContentLoaded', function() {
+            const socialLinks = document.querySelectorAll('.social-links a');
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+
+            // Handle contact form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleContactSubmission);
+            }
+        });
+
+        // Handle contact form submission
+        async function handleContactSubmission(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'SUBMITTING...';
+            
+            const submissionData = {
+                id: 'CNT' + Date.now(),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message'),
+                submission_date: new Date().toISOString(),
+                status: 'new'
+            };
+            
+            try {
+                // Try PHP backend first
+                const response = await fetch('./contact_handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'submit',
+                        name: submissionData.name,
+                        email: submissionData.email,
+                        message: submissionData.message
+                    })
+                });
+                
+                // Check if response is ok and has content
+                if (response.ok) {
+                    const responseText = await response.text();
+                    if (responseText) {
+                        const result = JSON.parse(responseText);
+                        if (result.success) {
+                            alert('Thank you for your message! We will get back to you soon.');
+                            e.target.reset();
+                            return;
+                        }
+                    }
+                }
+                
+                // If PHP backend fails, use localStorage fallback
+                throw new Error('Backend not available');
+                
+            } catch (error) {
+                console.warn('PHP backend not available, using localStorage fallback:', error);
+                
+                // Fallback to localStorage
+                try {
+                    const existingData = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+                    existingData.push(submissionData);
+                    localStorage.setItem('contactSubmissions', JSON.stringify(existingData));
+                    
+                    alert('Thank you for your message! Your submission has been saved locally. Please note: For full functionality, ensure your server supports PHP.');
+                    e.target.reset();
+                    
+                    // Also log to console for debugging
+                    console.log('Contact submission saved locally:', submissionData);
+                    
+                } catch (localError) {
+                    console.error('Contact form error:', localError);
+                    alert('Sorry, there was an error submitting your message. Please try again or contact us directly at nagarjunatechsolutions@gmail.com');
+                }
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

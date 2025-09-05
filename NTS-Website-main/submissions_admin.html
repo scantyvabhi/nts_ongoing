@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submissions - Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/nit.png" type="image/x-icon">
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#f0f0f0] text-gray-700 min-h-screen">
+    
+    <div class="container mx-auto p-6">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">Form Submissions Dashboard</h1>
+                    <p class="text-gray-600 mt-2">View and manage all form submissions</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="admin.html" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                        Employee Admin
+                    </a>
+                    <a href="index.html" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                        ← Back to Website
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex space-x-4 border-b">
+                <button onclick="showTab('contact')" id="tab-contact" class="px-6 py-3 font-medium border-b-2 border-[#14b8a6] text-[#14b8a6]">
+                    Contact Messages (<span id="contact-count">0</span>)
+                </button>
+                <button onclick="showTab('enquiries')" id="tab-enquiries" class="px-6 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Service Enquiries (<span id="enquiry-count">0</span>)
+                </button>
+                <button onclick="showTab('applications')" id="tab-applications" class="px-6 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Job Applications (<span id="application-count">0</span>)
+                </button>
+            </div>
+        </div>
+
+        <!-- Contact Messages Tab -->
+        <div id="contact-tab" class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-6 border-b">
+                <h3 class="text-xl font-semibold">Contact Messages</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactTableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Contact messages will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Service Enquiries Tab -->
+        <div id="enquiries-tab" class="bg-white rounded-lg shadow-lg overflow-hidden hidden">
+            <div class="p-6 border-b">
+                <h3 class="text-xl font-semibold">Service Enquiries</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Service</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enquiriesTableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Service enquiries will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Job Applications Tab -->
+        <div id="applications-tab" class="bg-white rounded-lg shadow-lg overflow-hidden hidden">
+            <div class="p-6 border-b">
+                <h3 class="text-xl font-semibold">Job Applications</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationsTableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Job applications will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let contactSubmissions = [];
+        let serviceEnquiries = [];
+        let jobApplications = [];
+
+        // Load all data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllSubmissions();
+        });
+
+        // Tab switching functionality
+        function showTab(tab) {
+            // Hide all tabs
+            document.getElementById('contact-tab').classList.add('hidden');
+            document.getElementById('enquiries-tab').classList.add('hidden');
+            document.getElementById('applications-tab').classList.add('hidden');
+
+            // Reset all tab buttons
+            document.getElementById('tab-contact').classList.remove('border-[#14b8a6]', 'text-[#14b8a6]');
+            document.getElementById('tab-contact').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('tab-enquiries').classList.remove('border-[#14b8a6]', 'text-[#14b8a6]');
+            document.getElementById('tab-enquiries').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('tab-applications').classList.remove('border-[#14b8a6]', 'text-[#14b8a6]');
+            document.getElementById('tab-applications').classList.add('border-transparent', 'text-gray-500');
+
+            // Show selected tab
+            if (tab === 'contact') {
+                document.getElementById('contact-tab').classList.remove('hidden');
+                document.getElementById('tab-contact').classList.add('border-[#14b8a6]', 'text-[#14b8a6]');
+                document.getElementById('tab-contact').classList.remove('border-transparent', 'text-gray-500');
+            } else if (tab === 'enquiries') {
+                document.getElementById('enquiries-tab').classList.remove('hidden');
+                document.getElementById('tab-enquiries').classList.add('border-[#14b8a6]', 'text-[#14b8a6]');
+                document.getElementById('tab-enquiries').classList.remove('border-transparent', 'text-gray-500');
+            } else if (tab === 'applications') {
+                document.getElementById('applications-tab').classList.remove('hidden');
+                document.getElementById('tab-applications').classList.add('border-[#14b8a6]', 'text-[#14b8a6]');
+                document.getElementById('tab-applications').classList.remove('border-transparent', 'text-gray-500');
+            }
+        }
+
+        // Load all submissions
+        async function loadAllSubmissions() {
+            await Promise.all([
+                loadContactSubmissions(),
+                loadServiceEnquiries(),
+                loadJobApplications()
+            ]);
+        }
+
+        // Load contact submissions
+        async function loadContactSubmissions() {
+            try {
+                const response = await fetch('./contact_handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: 'get' })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    contactSubmissions = result.submissions;
+                    document.getElementById('contact-count').textContent = contactSubmissions.length;
+                    renderContactTable();
+                }
+            } catch (error) {
+                console.error('Error loading contact submissions:', error);
+            }
+        }
+
+        // Load service enquiries
+        async function loadServiceEnquiries() {
+            try {
+                const formData = new FormData();
+                formData.append('action', 'get_enquiries');
+
+                const response = await fetch('./forms_handler.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    serviceEnquiries = result.enquiries;
+                    document.getElementById('enquiry-count').textContent = serviceEnquiries.length;
+                    renderEnquiriesTable();
+                }
+            } catch (error) {
+                console.error('Error loading service enquiries:', error);
+            }
+        }
+
+        // Load job applications
+        async function loadJobApplications() {
+            try {
+                const formData = new FormData();
+                formData.append('action', 'get_applications');
+
+                const response = await fetch('./forms_handler.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    jobApplications = result.applications;
+                    document.getElementById('application-count').textContent = jobApplications.length;
+                    renderApplicationsTable();
+                }
+            } catch (error) {
+                console.error('Error loading job applications:', error);
+            }
+        }
+
+        // Render contact table
+        function renderContactTable() {
+            const tbody = document.getElementById('contactTableBody');
+            tbody.innerHTML = '';
+
+            if (contactSubmissions.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="px-6 py-4 text-center text-gray-500">No contact messages found</td></tr>';
+                return;
+            }
+
+            contactSubmissions.forEach(submission => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${submission.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${submission.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${submission.email}</td>
+                    <td class="px-6 py-4 text-sm text-gray-900 max-w-xs truncate" title="${submission.message}">${submission.message}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${new Date(submission.submission_date).toLocaleDateString()}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-medium rounded-full ${submission.status === 'new' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">
+                            ${submission.status}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Render enquiries table
+        function renderEnquiriesTable() {
+            const tbody = document.getElementById('enquiriesTableBody');
+            tbody.innerHTML = '';
+
+            if (serviceEnquiries.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" class="px-6 py-4 text-center text-gray-500">No service enquiries found</td></tr>';
+                return;
+            }
+
+            serviceEnquiries.forEach(enquiry => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${enquiry.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${enquiry.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${enquiry.email}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${enquiry.phone}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${enquiry.service_type}</td>
+                    <td class="px-6 py-4 text-sm text-gray-900 max-w-xs truncate" title="${enquiry.message}">${enquiry.message}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${new Date(enquiry.submission_date).toLocaleDateString()}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-medium rounded-full ${enquiry.status === 'new' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">
+                            ${enquiry.status}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Render applications table
+        function renderApplicationsTable() {
+            const tbody = document.getElementById('applicationsTableBody');
+            tbody.innerHTML = '';
+
+            if (jobApplications.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" class="px-6 py-4 text-center text-gray-500">No job applications found</td></tr>';
+                return;
+            }
+
+            jobApplications.forEach(application => {
+                const row = document.createElement('tr');
+                const resumeLink = application.resume_filename ? 
+                    `<a href="./uploads/resumes/${application.resume_filename}" target="_blank" class="text-blue-600 hover:text-blue-800">View Resume</a>` : 
+                    'No file';
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${application.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${application.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${application.email}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${application.phone}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${application.role}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600">${resumeLink}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${new Date(application.submission_date).toLocaleDateString()}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-medium rounded-full ${application.status === 'new' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">
+                            ${application.status}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>

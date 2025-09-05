@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Test - NTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-3xl font-bold text-center mb-8">Server Connection Test</h1>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div id="testResults" class="space-y-4">
+                    <div class="text-center">
+                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                        <p class="mt-2 text-gray-600">Testing server connection...</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t">
+                    <h3 class="font-semibold mb-2">What this test checks:</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                        <li>PHP is installed and working</li>
+                        <li>update_csv.php can be accessed</li>
+                        <li>CSV file can be read</li>
+                        <li>CSV file can be written to</li>
+                        <li>File permissions are correct</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t">
+                    <h3 class="font-semibold mb-2">If tests fail:</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                        <li>Make sure you're running this on a web server (not opening files directly)</li>
+                        <li>Install PHP if not already installed</li>
+                        <li>Check that the <code>data/</code> folder has write permissions (chmod 755)</li>
+                        <li>Ensure your web server supports PHP</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <a href="admin.html" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Go to Admin Panel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function runTests() {
+            const resultsDiv = document.getElementById('testResults');
+            let allTestsPassed = true;
+            
+            // Test 1: Check if PHP file exists
+            try {
+                const response = await fetch('./update_csv.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'get'
+                    })
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.success) {
+                        addTestResult('✅ PHP Backend Access', 'Successfully connected to update_csv.php', 'success');
+                    } else {
+                        addTestResult('❌ PHP Backend Error', result.error, 'error');
+                        allTestsPassed = false;
+                    }
+                } else {
+                    addTestResult('❌ PHP Backend Not Found', `HTTP ${response.status}: ${response.statusText}`, 'error');
+                    allTestsPassed = false;
+                }
+            } catch (error) {
+                addTestResult('❌ PHP Backend Connection Failed', error.message, 'error');
+                allTestsPassed = false;
+            }
+            
+            // Test 2: Check CSV file access
+            try {
+                const response = await fetch('./data/employees.csv');
+                if (response.ok) {
+                    addTestResult('✅ CSV File Access', 'Successfully read employees.csv', 'success');
+                } else {
+                    addTestResult('❌ CSV File Not Found', `HTTP ${response.status}: ${response.statusText}`, 'error');
+                    allTestsPassed = false;
+                }
+            } catch (error) {
+                addTestResult('❌ CSV File Access Failed', error.message, 'error');
+                allTestsPassed = false;
+            }
+            
+            // Test 3: Try to update CSV
+            try {
+                const testData = [
+                    {
+                        id: 'test', name: 'Test User', fullName: 'Test User', 
+                        designation: 'Tester', department: 'Testing', 
+                        employeeId: 'TEST001', doj: '2024-01-01', 
+                        workingPeriod: '1 day', email: 'test@test.com', 
+                        phone: '+1234567890', image: './assets/test.jpg', 
+                        about: 'Test user for server testing', 
+                        linkedin: '#', instagram: '#', isActive: '0'
+                    }
+                ];
+                
+                const response = await fetch('./update_csv.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'update',
+                        employees: testData
+                    })
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.success) {
+                        addTestResult('✅ CSV Write Access', 'Successfully wrote to employees.csv', 'success');
+                    } else {
+                        addTestResult('❌ CSV Write Error', result.error, 'error');
+                        allTestsPassed = false;
+                    }
+                } else {
+                    addTestResult('❌ CSV Write Failed', `HTTP ${response.status}: ${response.statusText}`, 'error');
+                    allTestsPassed = false;
+                }
+            } catch (error) {
+                addTestResult('❌ CSV Write Connection Failed', error.message, 'error');
+                allTestsPassed = false;
+            }
+            
+            // Final result
+            if (allTestsPassed) {
+                addTestResult('🎉 All Tests Passed!', 'Your server is properly configured for the admin panel.', 'success');
+            } else {
+                addTestResult('⚠️ Some Tests Failed', 'Please check the issues above and fix them before using the admin panel.', 'warning');
+            }
+        }
+        
+        function addTestResult(title, message, type) {
+            const resultsDiv = document.getElementById('testResults');
+            const resultDiv = document.createElement('div');
+            
+            let bgColor = 'bg-green-50';
+            let borderColor = 'border-green-200';
+            let textColor = 'text-green-800';
+            
+            if (type === 'error') {
+                bgColor = 'bg-red-50';
+                borderColor = 'border-red-200';
+                textColor = 'text-red-800';
+            } else if (type === 'warning') {
+                bgColor = 'bg-yellow-50';
+                borderColor = 'border-yellow-200';
+                textColor = 'text-yellow-800';
+            }
+            
+            resultDiv.className = `p-4 rounded-lg border ${bgColor} ${borderColor}`;
+            resultDiv.innerHTML = `
+                <h3 class="font-semibold ${textColor}">${title}</h3>
+                <p class="text-sm ${textColor} mt-1">${message}</p>
+            `;
+            
+            resultsDiv.appendChild(resultDiv);
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html> 

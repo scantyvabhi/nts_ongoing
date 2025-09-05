@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Local Form Data - NTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8">Local Form Submissions</h1>
+        
+        <div class="bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded mb-6">
+            <strong>Note:</strong> This page shows form submissions saved locally in your browser when PHP backend is not available.
+            For persistent server-side storage, ensure your server supports PHP.
+        </div>
+
+        <!-- Contact Submissions -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold">Contact Submissions (<span id="contact-count">0</span>)</h2>
+                <button onclick="clearContactData()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Clear Data
+                </button>
+            </div>
+            <div id="contact-data" class="overflow-x-auto">
+                <p class="text-gray-500">No contact submissions found in local storage.</p>
+            </div>
+        </div>
+
+        <!-- Service Enquiries -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold">Service Enquiries (<span id="enquiry-count">0</span>)</h2>
+                <button onclick="clearEnquiryData()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Clear Data
+                </button>
+            </div>
+            <div id="enquiry-data" class="overflow-x-auto">
+                <p class="text-gray-500">No service enquiries found in local storage.</p>
+            </div>
+        </div>
+
+        <!-- Job Applications -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold">Job Applications (<span id="application-count">0</span>)</h2>
+                <button onclick="clearApplicationData()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Clear Data
+                </button>
+            </div>
+            <div id="application-data" class="overflow-x-auto">
+                <p class="text-gray-500">No job applications found in local storage.</p>
+            </div>
+        </div>
+
+        <!-- Export Options -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">Export Data</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button onclick="exportContactData()" class="bg-blue-500 text-white p-4 rounded hover:bg-blue-600">
+                    Export Contact Data as JSON
+                </button>
+                <button onclick="exportEnquiryData()" class="bg-green-500 text-white p-4 rounded hover:bg-green-600">
+                    Export Enquiry Data as JSON
+                </button>
+                <button onclick="exportApplicationData()" class="bg-purple-500 text-white p-4 rounded hover:bg-purple-600">
+                    Export Application Data as JSON
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load and display data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllData();
+        });
+
+        function loadAllData() {
+            loadContactData();
+            loadEnquiryData();
+            loadApplicationData();
+        }
+
+        function loadContactData() {
+            const data = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+            document.getElementById('contact-count').textContent = data.length;
+            
+            if (data.length === 0) {
+                document.getElementById('contact-data').innerHTML = '<p class="text-gray-500">No contact submissions found in local storage.</p>';
+                return;
+            }
+
+            const table = `
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border border-gray-300 px-4 py-2">ID</th>
+                            <th class="border border-gray-300 px-4 py-2">Name</th>
+                            <th class="border border-gray-300 px-4 py-2">Email</th>
+                            <th class="border border-gray-300 px-4 py-2">Message</th>
+                            <th class="border border-gray-300 px-4 py-2">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.map(item => `
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-2">${item.id}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.name}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.email}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.message}</td>
+                                <td class="border border-gray-300 px-4 py-2">${new Date(item.submission_date).toLocaleString()}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('contact-data').innerHTML = table;
+        }
+
+        function loadEnquiryData() {
+            const data = JSON.parse(localStorage.getItem('serviceEnquiries') || '[]');
+            document.getElementById('enquiry-count').textContent = data.length;
+            
+            if (data.length === 0) {
+                document.getElementById('enquiry-data').innerHTML = '<p class="text-gray-500">No service enquiries found in local storage.</p>';
+                return;
+            }
+
+            const table = `
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border border-gray-300 px-4 py-2">ID</th>
+                            <th class="border border-gray-300 px-4 py-2">Name</th>
+                            <th class="border border-gray-300 px-4 py-2">Email</th>
+                            <th class="border border-gray-300 px-4 py-2">Phone</th>
+                            <th class="border border-gray-300 px-4 py-2">Service</th>
+                            <th class="border border-gray-300 px-4 py-2">Message</th>
+                            <th class="border border-gray-300 px-4 py-2">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.map(item => `
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-2">${item.id}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.name}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.email}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.phone}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.service_type}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.message}</td>
+                                <td class="border border-gray-300 px-4 py-2">${new Date(item.submission_date).toLocaleString()}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('enquiry-data').innerHTML = table;
+        }
+
+        function loadApplicationData() {
+            const data = JSON.parse(localStorage.getItem('jobApplications') || '[]');
+            document.getElementById('application-count').textContent = data.length;
+            
+            if (data.length === 0) {
+                document.getElementById('application-data').innerHTML = '<p class="text-gray-500">No job applications found in local storage.</p>';
+                return;
+            }
+
+            const table = `
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border border-gray-300 px-4 py-2">ID</th>
+                            <th class="border border-gray-300 px-4 py-2">Name</th>
+                            <th class="border border-gray-300 px-4 py-2">Email</th>
+                            <th class="border border-gray-300 px-4 py-2">Phone</th>
+                            <th class="border border-gray-300 px-4 py-2">Role</th>
+                            <th class="border border-gray-300 px-4 py-2">Message</th>
+                            <th class="border border-gray-300 px-4 py-2">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.map(item => `
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-2">${item.id}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.name}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.email}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.phone}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.role}</td>
+                                <td class="border border-gray-300 px-4 py-2">${item.message}</td>
+                                <td class="border border-gray-300 px-4 py-2">${new Date(item.submission_date).toLocaleString()}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('application-data').innerHTML = table;
+        }
+
+        // Clear functions
+        function clearContactData() {
+            if (confirm('Are you sure you want to clear all contact submissions?')) {
+                localStorage.removeItem('contactSubmissions');
+                loadContactData();
+            }
+        }
+
+        function clearEnquiryData() {
+            if (confirm('Are you sure you want to clear all service enquiries?')) {
+                localStorage.removeItem('serviceEnquiries');
+                loadEnquiryData();
+            }
+        }
+
+        function clearApplicationData() {
+            if (confirm('Are you sure you want to clear all job applications?')) {
+                localStorage.removeItem('jobApplications');
+                loadApplicationData();
+            }
+        }
+
+        // Export functions
+        function exportContactData() {
+            const data = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+            downloadJSON(data, 'contact_submissions.json');
+        }
+
+        function exportEnquiryData() {
+            const data = JSON.parse(localStorage.getItem('serviceEnquiries') || '[]');
+            downloadJSON(data, 'service_enquiries.json');
+        }
+
+        function exportApplicationData() {
+            const data = JSON.parse(localStorage.getItem('jobApplications') || '[]');
+            downloadJSON(data, 'job_applications.json');
+        }
+
+        function downloadJSON(data, filename) {
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
